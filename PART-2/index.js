@@ -1,11 +1,14 @@
+var x = 7
 getName() // Calling before declaration
-
-var x = 7 // undefined
+setName() // Calling before declaration
+console.log(x)
 
 function getName () { // Declaring
   console.log('Namaste Javascript')
 }
 
-console.log(x)
+function setName () {
+  console.log('Namaste React')
+}
 
-// In the above program, the function getName() is called before declaring it and the program shows the output. This is due to hoisting.
+// In the above program, the function getName() and setName() and variable x are called before declaring it and the program shows the output. This is due to hoisting.
