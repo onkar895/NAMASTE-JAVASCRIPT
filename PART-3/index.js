@@ -17,11 +17,11 @@ function b () {
 
 // Code Flow in terms of Execution Context :
 
-//     The Global Execution Context (GEC) is created (the big box with Memory and Code subparts). Also GEC is pushed into Call Stack
+//     The Global Execution Context (GEC) is created (the big box with Memory and Code subparts). Also GEC is pushed into Call Stack.
 
 //     Call Stack : GEC
 
-//     In first phase of GEC (memory phase), variable x:undefined and a and b have their entire function code as value initialized
+//     In first phase of GEC (memory phase), variable x:undefined and a and b have their entire function code as value initialized.
 
 //     In second phase of GEC (execution phase), when the function is called, a new local Execution Context is created. After x = 1 assigned to GEC x, a() is called. So local EC for a is made inside code part of GEC.
 
