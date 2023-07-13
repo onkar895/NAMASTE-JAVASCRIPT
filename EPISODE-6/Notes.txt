@@ -20,13 +20,14 @@ a() = [b:10, c:{}, [lexical environment pointer pointing to GEC]]
 GEC =  [a:{},[lexical_environment pointer pointing to null]]
 
 
-1. Lexical Environment = local memory + lexical env of its parent. Hence, Lexical Environement is the local memory along with the lexical environment of its parent
+1. Lexical Environment = local memory + lexical env of its parent. 
+Hence, Lexical Environement is the local memory along with the lexical environment of its parent.
 
 2. Lexical: In hierarchy, In order
 
 3. Whenever an Execution Context is created, a Lexical environment(LE) is also created and is referenced in the local Execution Context(in memory space).
 
-4. The process of going one by one to parent and checking for values is called scope chain or Lexcial environment chain.
+4. Scope Chain : The process of going one by one to parent and checking for values is called scope chain or Lexcial environment chain.
 
 function a() {
   function c() {
