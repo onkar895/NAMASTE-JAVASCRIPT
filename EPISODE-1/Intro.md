@@ -11,6 +11,7 @@
 ## HOW JAVASCRIPT ACTUALLY WORKS :
 
 -   "Everything in Javascript happens inside an EXECUTION CONTEXT". The execution context is like a big box or container where the JavaScript code is executed.
+    ![Execution Context](https://alok722.github.io/namaste-javascript-notes/assets/execution-context.jpg)
 -   When a Javascript code is executed, an Execution Context is created and it is called as Global Execution Context.
 -   A javascript program is executed in 2 phases inside the Execution Context.
     -   MEMORY ALLOCATION PHASE :
