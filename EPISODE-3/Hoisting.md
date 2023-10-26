@@ -7,12 +7,12 @@
 
 ### Let's observe the below code and it's explaination:
 
-```
+```js
 getName(); // Namaste Javascript
 console.log(x); // undefined
 var x = 7;
 function getName() {
-console.log("Namaste Javascript");
+    console.log("Namaste Javascript");
 }
 ```
 
@@ -31,22 +31,22 @@ console.log("Namaste Javascript");
 
 ### Example:
 
-```
+```js
 getName(); // Namaste JavaScript
 console.log(x); // Uncaught Reference: x is not defined.
 console.log(getName); // f getName(){ console.log("Namaste JavaScript); }
 function getName() {
-console.log("Namaste JavaScript");
+    console.log("Namaste JavaScript");
 }
 ```
 
 ### Now let's observe a different example and try to understand the output:
 
-```
+```js
 getName(); // Uncaught TypeError: getName is not a function
 console.log(getName);
 var getName = function () {
-console.log("Namaste JavaScript");
+    console.log("Namaste JavaScript");
 };
 // The code won't execute as the first line itself throws an TypeError.
 ```
