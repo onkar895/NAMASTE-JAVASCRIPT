@@ -1,38 +1,33 @@
-// How functions work in JS ❤️ & Variable Environment :
+// Without Hoisting
+var x = 7
 
-var x = 1
-a()
-b(); // we are calling the functions before defining them. This will work properly, as seen in Hoisting.
-console.log(x) // 3
-
-function a () {
-  var x = 10 // localscope because of separate execution context
-  console.log(x) // 1
+function myName () {
+  console.log('Omkar Karale')
 }
 
-function b () {
-  var x = 100
-  console.log(x) // 2
+myName()
+console.log(x)
+
+var height = 180
+console.log(height); // -> 180
+console.log(weight); // -> undefined
+var weight = 90
+console.log(weight)
+
+// Hoisting
+console.log(y)
+var y = 9
+var x = 7
+console.log(x)
+getName() // Calling before declaration
+setName() // Calling before declaration
+
+function getName () { // Declaring
+  console.log('Namaste Javascript')
 }
 
-// Code Flow in terms of Execution Context :
+function setName () {
+  console.log('Namaste React')
+}
 
-//     The Global Execution Context (GEC) is created (the big box with Memory and Code subparts). Also GEC is pushed into Call Stack.
-
-//     Call Stack : GEC
-
-//     In first phase of GEC (memory phase), variable x:undefined and a and b have their entire function code as value initialized.
-
-//     In second phase of GEC (execution phase), when the function is called, a new local Execution Context is created. After x = 1 assigned to GEC x, a() is called. So local EC for a is made inside code part of GEC.
-
-//     Call Stack: [GEC, a()]
-
-//     For local EC, a totally different x variable assigned undefined(x inside a()) in phase 1 , and in phase 2 it is assigned 10 and printed in console log. After printing, no more commands to run, so a() local EC is removed from both GEC and from Call stack
-
-//     Call Stack: GEC
-
-//     Cursor goes back to b() function call. Same steps repeat.
-
-//     Call Stack :[GEC, b()] -> GEC (after printing yet another totally different x value as 100 in console log)
-
-//     Finally GEC is deleted and also removed from call stack. Program ends.
+// In the above program, the function getName() , setName() and variable x are called before declaring it however the program shows the output. This is due to hoisting.
