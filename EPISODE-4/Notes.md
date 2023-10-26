@@ -1,6 +1,6 @@
 ## How functions work in JS & Variable Environment :
 
-```
+```js
 var x = 1;
 a();
 b(); // we are calling the functions before defining them. This will work properly, as seen
@@ -43,7 +43,13 @@ Call Stack: [GEC, a()]
 Call Stack: GEC
 ```
 
-Cursor goes back to b() function call. Same steps repeat.
+-   Cursor goes back to b() function call. Same steps repeat.
+
+```
 Call Stack :[GEC, b()] -> GEC (after printing yet another totally different x value as 100 in console log)
+```
 
 -   Finally GEC is deleted and also removed from call stack. Program ends.
+
+-   Reference :
+    ![Final Execution Context](https://alok722.github.io/namaste-javascript-notes/assets/function.jpg)
