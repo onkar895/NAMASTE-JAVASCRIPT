@@ -8,17 +8,12 @@ function myName () {
 myName()
 console.log(x)
 
-var height = 180
-console.log(height); // -> 180
-console.log(weight); // -> undefined
-var weight = 90
-console.log(weight)
-
 // Hoisting
 console.log(y)
 var y = 9
 var x = 7
 console.log(x)
+console.log(y)
 getName() // Calling before declaration
 setName() // Calling before declaration
 

@@ -1,11 +1,11 @@
 ## Hoisting in JavaScript 🔥(variables & functions) :
 
--   In JavaScript,Hoisting is a default behavior in which a function or a variable can be used before declaration.
--   Basically, it gives us an advantage that no matter where functions and variables are declared, they are moved to the top of their scope regardless of whether their scope is global or local.
+-   In JavaScript, **Hoisting** is a default behavior in which a function or a variable can be used before declaration.
+-   Basically, it gives us an advantage that no matter where **functions and variables** are declared, they are moved to the top of their scope regardless of whether their scope is **global or local**.
 -   It allows us to call functions before even writing them in our code.
--   JavaScript only hoists declarations, not initializations.
+-   JavaScript only hoists **declarations, not initializations**.
 
-### Let's observe the below code and it's explaination:
+### Let's observe the below code and it's explaination :
 
 ```js
 getName(); // Namaste Javascript
@@ -17,12 +17,13 @@ function getName() {
 ```
 
 -   It should have been an outright error in many other languages, as it is not possible to even access something which
-    is not even created (defined) yet But in JS, We know that in memory creation phase it assigns undefined and puts
-    the content of function to function's memory. And in execution, it then executes whatever is asked. Here, as
+    is not even created (defined) yet.
+-   But in JS, We know that in memory creation phase it assigns **undefined** and puts
+    the content of function to function's memory and in execution, it then executes whatever is asked. Here, as
     execution goes line by line and not after compiling, it could only print undefined and nothing else.
 -   This phenomenon, is not an error. However, if we remove var x = 7; then it gives error. Uncaught ReferenceError: x is not
     defined.
--   Hoisting is a concept which enables us to extract values of variables and functions even before
+-   **Hoisting** is a concept which enables us to extract values of **variables and functions** even before
     initialising/assigning value without getting error and this is happening due to the 1st phase (memory creation
     phase) of the Execution Context.
 -   So in previous lecture, we learnt that execution context gets created in two phase, so even before code execution,
