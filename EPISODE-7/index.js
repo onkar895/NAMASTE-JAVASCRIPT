@@ -1,35 +1,39 @@
-console.log(a); // ReferenceError: Cannot access 'a' before initialization
-console.log(b) // prints undefined as expected
-let a = 10
-console.log(a) // 10
-var b = 15
-console.log(window.a) // undefined
-console.log(window.b) // 15
+// CASE 1 : function a is able to access variable b from Global scope.
+function a () {
+  console.log(b) // 10
+// Instead of printing undefined it prints 10, So somehow this a function could access the variable b outside the function scope. 
+}
+var b = 10
+a()
 
-// Both a and b are actually initialized as undefined in hoisting stage.
-// But var b is inside the storage space of GLOBAL, and a is in a separate memory object called script, where it can be accessed only after assigning some value to it first ie.one can access 'a' only if it is assigned.Thus, it throws error.
+// CASE 2 : 20 is printed. It means that within nested function too, the global scope variable can be accessed.
+function m () {
+  c()
+  function c () {
+    console.log(b) // 20
+  }
+}
+var b = 20
+m()
 
-// Reference Error are thrown when variables are in temporal dead zone.
+// CASE 3 : 100 is printed meaning local variable of the same name took precedence over a global variable.
+function x () {
+  c()
+  function c () {
+    var b = 100
+    console.log(b) // 100
+  }
+}
+var b = 30
+x()
 
-// Syntax Error doesn't even let us run single line of code.
-
-// let x = 10
-// let x = 100
-// this code is rejected upfront as SyntaxError. (duplicate declaration)
-
-// let y = 10
-// var y = 100
-// this code also rejected upfront as SyntaxError. (can't use same name in same scope)
-
-// Let is a stricter version of var. Now, const is even more stricter than let.
-let x
-x = 10
-console.log(x) // 10.
-// Note that declaration and assigning of x is in different lines.
-
-// const y
-y = 10
-console.log(y); // SyntaxError: Missing initializer in const declaration. (This type of declaration won't work with const. const y = 10 only will work)
-
-const z = 100
-z = 1000; // this gives us TypeError: Assignment to constant variable.
+// CASE 4 : A function can access a global variable, but the global execution context can't access any local variable.
+function y () {
+  var b = 40
+  c()
+  function c () {
+    console.log(b)
+  }
+}
+y()
+console.log(b); // Error, Not Defined
