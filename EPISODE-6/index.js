@@ -1,39 +1,17 @@
-// CASE 1 : function a is able to access variable b from Global scope.
-function a () {
-  console.log(b) // 10
-// Instead of printing undefined it prints 10, So somehow this a function could access the variable b outside the function scope. 
-}
-var b = 10
-a()
+var a; // Memory is allocated for 'a', but no value is assigned yet
+console.log(a); // Output: undefined
 
-// CASE 2 : 10 is printed. It means that within nested function too, the global scope variable can be accessed.
-function a () {
-  c()
-  function c () {
-    console.log(b) // 10
-  }
-}
-var b = 10
-a()
+console.log(x) // undefined
+var x = 25
+console.log(x) // 25
 
-// CASE 3 : 100 is printed meaning local variable of the same name took precedence over a global variable.
-function a () {
-  c()
-  function c () {
-    var b = 100
-    console.log(b) // 100
-  }
-}
-var b = 10
-a()
+// console.log(z); // Uncaught ReferenceError: a is not defined
 
-// CASE 4 : A function can access a global variable, but the global execution context can't access any local variable.
-function a () {
-  var b = 10
-  c()
-  function c () {
-    console.log(b) // 10
-  }
-}
-a()
-console.log(b); // Error, Not Defined
+// JS is a loosely typed / weakly typed language. It doesn't attach variables to any datatype. We can say var b = 100, and then change the value to boolean a = true or string a = 'hello world' later on.
+
+var b
+console.log(b) // undefined
+b = 100
+console.log(b) // 100
+b = 'hello world'
+console.log(b) // hello world
