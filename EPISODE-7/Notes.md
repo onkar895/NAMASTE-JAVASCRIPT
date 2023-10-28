@@ -1,6 +1,6 @@
 ## The Scope Chain, Scope & Lexical Environment :
 
--   Scope in Javascript is directly related to Lexical Environment.
+-   Scope in Javascript is directly related to **Lexical Environment**.
 
 -   Let's observe the examples below :
 
@@ -71,14 +71,14 @@ GEC = [a:{},[lexical_environment pointer pointing to null]]
 ![Reference-Image](https://alok722.github.io/namaste-javascript-notes/assets/lexical.jpg)
 ![Reference-Image](https://alok722.github.io/namaste-javascript-notes/assets/lexical2.jpg)
 
--   Lexical Environment = local memory + lexical env of its parent.
+-   **Lexical Environment** = local memory + lexical env of its parent.
     Hence, Lexical Environement is the local memory along with the lexical environment of its parent.
 
--   Lexical: In hierarchy, In order
+-   **Lexical**: In hierarchy, In order
 
 -   Whenever an Execution Context is created, a Lexical environment(LE) is also created and is referenced in the local Execution Context(in memory space).
 
--   Scope Chain : The process of going one by one to parent and checking for values is called scope chain or Lexcial environment chain.
+-   **Scope Chain** : The process of going one by one to parent and checking for values is called scope chain or Lexcial environment chain.
 
 ```js
 function a() {
@@ -89,7 +89,7 @@ function a() {
 } // a is lexically inside global execution
 ```
 
--   Lexical or Static scope refers to the accessibility of variables, functions and object based on physical location in source code.
+-   **Lexical or Static** scope refers to the accessibility of variables, functions and object based on physical location in source code.
 
 ```js
 Global {
