@@ -1,9 +1,9 @@
 ## How JS is executed & Call Stack:
 
--   When a JS program is ran, a global execution context is created.
--   The execution context is created in two phases.
-    -   Memory creation phase - JS will allocate memory to variables and functions.
-    -   Code execution phase
+-   When a JS program is ran, a **global execution context** is created.
+-   The execution context is created in **two phases**.
+    -   **Memory creation phase** - JS will allocate memory to variables and functions.
+    -   **Code execution phase** - where the actual code is executed.
 
 ### Let's consider the below example and its code execution steps:
 
@@ -19,14 +19,13 @@ var square2 = square(n);
 var square4 = square(4);
 ```
 
--   The very first thing which JS does is memory creation phase, so it goes to line one of above code snippet, and allocates
-    a memory space for variable 'n' and then goes to line two, and allocates a memory space for function 'square'.
--   When allocating memory for n it stores 'undefined', a special value for 'n'. For 'square', it stores the whole code of the function inside its memory space. Then, as square2 and square4 are variables as well, it allocates memory and stores 'undefined' for them, and this is the end of first phase i.e. memory creation phase.
+-   The very first thing which JS does is **memory creation phase**, so it goes to line one of above code snippet, and allocates a memory space for variable 'n' and then goes to line two, and allocates a memory space for function 'square'.
+-   When allocating memory for n it stores **'undefined'**, a special value for 'n'. For 'square', it stores the whole code of the function inside its memory space. Then, as square2 and square4 are variables as well, it allocates memory and stores 'undefined' for them, and this is the end of first phase i.e. memory creation phase.
 
 -   So O/P will look something like :
     ![Memory Creation Phase](https://alok722.github.io/namaste-javascript-notes/assets/phase1.jpg)
 
--   Now, in 2nd phase i.e. code execution phase, it starts going through the whole code line by line. As it encounters var n = 2, it assigns 2 to 'n'. Until now, the value of 'n' was undefined. For function, there is nothing to execute.
+-   Now, in 2nd phase i.e. **code execution phase**, it starts going through the whole code line by line. As it encounters var n = 2, it assigns 2 to 'n'. Until now, the value of 'n' was undefined. For function, there is nothing to execute.
 -   As these lines were already dealt with in memory creation phase.
 -   Coming to line 6 i.e. var square2 = square(n), here functions are a bit different than any other language. A new
     execution context is created altogether.
@@ -43,8 +42,8 @@ var square4 = square(4);
 
 ### CALL STACK:
 
--   Javascript manages code execution context creation and deletion with the the help of Call Stack.
--   Call Stack is a mechanism to keep track of its place in script that calls multiple function.
--   Call Stack maintains the order of execution of execution contexts.
--   It is also known as Program Stack, Control Stack,
-    Runtime stack, Machine Stack, Execution context stack.
+-   Javascript manages code execution context **creation and deletion** with the the help of **Call Stack**.
+-   **Call Stack** is a mechanism to keep track of its place in script that calls multiple function.
+-   **Call Stack** maintains the order of execution of execution contexts.
+-   It is also known as **Program Stack, Control Stack**,
+    **Runtime stack, Machine Stack, Execution context stack**.
