@@ -35,6 +35,8 @@ console.log(b); // Uncaught ReferenceError: b is not defined
 
 ### What is Shadowing?
 
+-   We can declare the global variable and a local variable of the same name.
+
 ```js
 var m = 100;
 var n = 200;
