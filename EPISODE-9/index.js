@@ -29,6 +29,8 @@ console.log(y) // ReferenceError: y is not defined
 
 // Shadowing : We can declare the global variable and a local variable of the same name.
 var m = 100
+var n = 200
+var p = 300
 {
   var m = 10 // same name as global var
   let n = 20
@@ -38,4 +40,8 @@ var m = 100
   console.log(p) // 30
 }
 console.log(m) // 10 
-// Instead of the 100 we were expecting.So block "a" modified value of global "a" as well.In console, only b and c are in block space.a initially is in global space(a = 100), and when a = 10 line is run, a is not created in block space, but replaces 100 with 10 in global space itself.
+console.log(n) // 200 
+console.log(p) // 300 
+// Instead of the 100 we were expecting.So block "m" modified value of global "m" as well.
+// In console, only n and p are in block space thats why its result shows the output in the global scope.
+// m initially is in global space(m = 100), and when m = 10 line is run, m is not created in block space, but replaces 100 with 10 in global space itself instead n and p not replacing the values because its in the global space.
