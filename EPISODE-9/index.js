@@ -62,3 +62,10 @@ x()
 console.log(d) // 10 
 console.log(e) // 200 
 console.log(f) // 300
+
+// Illegal Shadowing :  We cannot shadow let with var. But it is valid to shadow a let using a let. However, we can shadow var with let.
+let a = 20
+{
+  var a = 20
+}
+// Uncaught SyntaxError: Identifier 'a' has already been declared
