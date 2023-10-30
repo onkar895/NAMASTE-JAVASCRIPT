@@ -77,3 +77,10 @@ var a = 20
 {
   let a = 20
 }
+
+// All scope rules that work in function are same in arrow functions too.
+// Valid
+let a = 20
+function x () {
+  var a = 20 // Since var is function scoped, it is not a problem with the code below.
+}
