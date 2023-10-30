@@ -57,7 +57,27 @@ console.log(p); // 300
 -   Instead of the 100 we were expecting.So block "m" modified value of global "m" as well.
 -   In console, only n and p are in block space thats why its result shows the output in the global scope.
 -   m initially is in global space(m = 100), and when m = 10 line is run, m is not created in block space, but replaces 100 with 10 in global space itself instead n and p not replacing the values because its in the global space.
--   So, If one has same named variable outside the block, the variable inside the block shadows the outside variable. This happens only for var
+-   So, If one has same named variable outside the block, the variable inside the block shadows the outside variable. This happens only for var.
+
+-   Similar things happens with the function shadowing :
+
+```js
+var d = 100;
+var e = 200;
+var f = 300;
+function x() {
+    var d = 10; // same name as global var
+    let e = 20;
+    const f = 30;
+    console.log(d); // 10
+    console.log(e); // 20
+    console.log(f); // 30
+}
+x();
+console.log(d); // 10
+console.log(e); // 200
+console.log(f); // 300
+```
 
 ### Let's observe the behaviour in case of let and const and understand it's reason :
 
@@ -92,11 +112,20 @@ console.log(c); // 100
 ### What is Illegal Shadowing?
 
 ```js
+// Invalid
 let a = 20;
 {
     var a = 20;
 }
 // Uncaught SyntaxError: Identifier 'a' has already been declared
+```
+
+```js
+// Valid
+var a = 20;
+{
+    let a = 20;
+}
 ```
 
 -   We cannot shadow let with var. But it is valid to shadow a let using a let.
@@ -105,8 +134,20 @@ let a = 20;
 -   Since var is function scoped, it is not a problem with the code below.
 
 ```js
+// Valid
 let a = 20;
 function x() {
     var a = 20;
 }
+// Since var is function scoped, it is not a problem with the code below.
 ```
+
+### Summary :
+
+-   Code inside curly bracket is called block.
+-   Multiple statements are grouped inside a block so it can be written where JS expects single statements like in if, else, loop, function etc.
+-   Block values are stored inside separate memory than global. They are stored in block. (the reason let and const are called block scope)
+-   Shadowing of variables using var, let and const.
+-   The shadow should not cross the scope of original otherwise it will give error.
+-   shadowing let with var is illegal shadowing and gives error.
+-   var value is stored in nearest outer function or global scope and hence can be accessed outside block as well whereas same is not the case with let and const.
