@@ -23,7 +23,7 @@ if (true) {
   console.log(y) // 30
 }
 console.log(b) // 10
-// let and const are in block scope, so you cannot access this ouside this scope.
+// let and const are block scoped, so you cannot access them ouside this scope.
 console.log(c) // ReferenceError: c is not defined
 console.log(y) // ReferenceError: y is not defined
 
