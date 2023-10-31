@@ -6,6 +6,5 @@ const x = () => {
   console.log('Namaste Javascript')
 }
 x()
-// Output:
-// Namaste Javascript
-// 1 after waiting for 3 seconds
+// So, this setTimeout takes the callback function and attaches the timer of 3000 milliseconds to it.
+// and once the timer expires, it takes that function and puts it again to the call stack and runs it, that's how setTimeout work.
