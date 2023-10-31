@@ -2,16 +2,18 @@
 
 -   **Lexical scope** is the ability for a **function scope** to access variables from the **parent scope**.
 -   JavaScript has a lexcial scope environment. If a function needs to access a variable, it first goes to its local memory. When it does not find it there, it goes to the memory of its lexical parent.
+-   An inner function can access variables which are in outer functions even if inner function is nested deep.
 
 ```js
 function x() {
     var a = 17;
     function y() {
+        // so here we can say that y() is lexically present inside x()
         console.log(a);
     }
     y();
 }
-x();
+x(); // so here we can say that x() is lexically present inside Global Execution
 ```
 
 -   x() creates a local variable called 'a' and a function called y().
