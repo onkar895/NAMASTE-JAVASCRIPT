@@ -54,6 +54,8 @@ myFunction();
 -   JavaScript has a lexcial scope environment. If a function needs to access a variable, it first goes to its local memory. When it does not find it there, it goes to the memory of its lexical parent.
 -   See Below code, Over here function displayName() along with its lexical scope i.e. (function makeFunc) would be called a **closure**.
 
+### Example 1 :
+
 ```js
 function makeFunc() {
     const name = "Mozilla";
@@ -71,7 +73,46 @@ myFunc();
 -   What's different (and interesting) is that the **displayName() inner function is returned from the outer function** before being executed.
 -   In above code, When displayName is returned, not only is the function returned but the entire closure (fun displayName + its lexical scope) is returned and put inside myFunc. So when myFunc is used somewhere else in program, it still remembers var **'name'** inside **makeFunc()**.
 
-### Another Example :
+### Example 2 :
+
+```js
+const myFunction2 = () => {
+    let myValue = 2;
+    console.log(myValue);
+
+    const childFunction2 = () => {
+        console.log((myValue += 1));
+    };
+
+    return childFunction2;
+};
+
+const result = myFunction2();
+console.log(result);
+result();
+result();
+result();
+```
+
+-   In this revision, myFunction returns childFunction instead of calling it.
+
+-   Therefore, when result is set equal to myFunction(), the console statement inside myFunction is logged, but not the statement inside childFunction.
+
+-   childFunction is not called into action.
+
+-   Instead, it is returned and held in result.
+
+-   In addition, we need to realize that myFunction has closed after it was called.
+
+-   The line with console.log(result) should show in the console that result now holds the anonymous function value that was childFunction.
+
+-   Now, when we call result(), we are calling the anonymous function that was assigned to childFunction.
+
+-   As a child of myFunction, this anonymous function has access to the myValue variable inside myFunction even after it has closed!
+
+-   The closure we created now allows us to continue to increase the value of the myValue variable every time we call result().
+
+### Example 3 :
 
 ```js
 function z() {
