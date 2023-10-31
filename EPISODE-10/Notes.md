@@ -65,3 +65,19 @@ z(); // 7 900
 -   Thus In simple words, we can say:
 -   A closure is a function that has access to its outer function scope even after the function has returned.
 -   Meaning, A closure can remember and access variables and arguments reference of its outer function even after the function has returned.
+
+![Reference-Image](https://alok722.github.io/namaste-javascript-notes/assets/closure.jpg)
+
+### Advantages of Closure:
+
+-   Module Design Pattern
+-   Currying
+-   Memoize
+-   Data hiding and encapsulation
+-   setTimeouts etc.
+
+### Disadvantages of Closure:
+
+-   Over consumption of memory
+-   Memory Leak
+-   Freeze browser
