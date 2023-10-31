@@ -25,5 +25,6 @@ const myFunc = makeFunc() // So this myfunc variable has displayname() function 
 myFunc() // Onkar
 console.log(myFunc)
 
+//  In above code, When displayName is returned, not only is the function returned but the entire closure (fun displayName + its lexical scope) is returned and put inside myFunc. So when myFunc is used somewhere else in program, it still remembers var 'name' inside makeFunc().
 // Running this code has exactly the same effect as the previous example of the x() function above in lexical scoping.
 // What's different (and interesting) is that the **displayName() inner function is returned from the outer function** before being executed.

@@ -44,3 +44,24 @@ myFunc();
 -   Running this code has exactly the same effect as the previous example of the x() function above in lexical scoping.
 -   What's different (and interesting) is that the **displayName() inner function is returned from the outer function** before being executed.
 -   In above code, When displayName is returned, not only is the function returned but the entire closure (fun displayName + its lexical scope) is returned and put inside myFunc. So when myFunc is used somewhere else in program, it still remembers var **'name'** inside **makeFunc()**.
+
+### Another Example :
+
+```js
+function z() {
+    var b = 900;
+    function x() {
+        var a = 7;
+        function y() {
+            console.log(a, b);
+        }
+        y();
+    }
+    x();
+}
+z(); // 7 900
+```
+
+-   Thus In simple words, we can say:
+-   A closure is a function that has access to its outer function scope even after the function has returned.
+-   Meaning, A closure can remember and access variables and arguments reference of its outer function even after the function has returned.
