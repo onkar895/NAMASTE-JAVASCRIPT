@@ -23,3 +23,19 @@ x();
 -   In other words, a **closure** gives you access to an **outer function's scope** from an \**inner function*8.
 -   In JavaScript, \**closures*8 are created every time a function is created, at function creation time.
 -   A **closure** is a feature of JavaScript that allows inner functions to access the outer scope of a function.
+
+```js
+function makeFunc() {
+    const name = "Mozilla";
+    function displayName() {
+        console.log(name);
+    }
+    return displayName;
+}
+
+const myFunc = makeFunc(); // So this myfunc variable has displayname() function inside it.
+myFunc();
+```
+
+-   Running this code has exactly the same effect as the previous example of the x() function above in lexical scoping.
+-   What's different (and interesting) is that the **displayName() inner function is returned from the outer function** before being executed.
