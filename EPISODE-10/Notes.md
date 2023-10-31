@@ -1,6 +1,6 @@
 ## Lexical Scoping :
 
--   Lexical scope is the ability for a function scope to access variables from the parent scope.
+-   **Lexical scope** is the ability for a **function scope** to access variables from the **parent scope**.
 
 ```js
 function x() {
@@ -19,7 +19,7 @@ x();
 
 ## Closures in JS :
 
--   A closure is the combination of a function bundled together (enclosed) with references to its surrounding state (the lexical environment).
--   In other words, a closure gives you access to an outer function's scope from an inner function.
--   In JavaScript, closures are created every time a function is created, at function creation time.
--   A closure is a feature of JavaScript that allows inner functions to access the outer scope of a function.
+-   A **closure** is the combination of a function bundled together (enclosed) with references to its surrounding state (the lexical environment).
+-   In other words, a **closure** gives you access to an **outer function's scope** from an \**inner function*8.
+-   In JavaScript, \**closures*8 are created every time a function is created, at function creation time.
+-   A **closure** is a feature of JavaScript that allows inner functions to access the outer scope of a function.
