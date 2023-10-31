@@ -1,6 +1,7 @@
 ## Lexical Scoping :
 
 -   **Lexical scope** is the ability for a **function scope** to access variables from the **parent scope**.
+-   JavaScript has a lexcial scope environment. If a function needs to access a variable, it first goes to its local memory. When it does not find it there, it goes to the memory of its lexical parent.
 
 ```js
 function x() {
