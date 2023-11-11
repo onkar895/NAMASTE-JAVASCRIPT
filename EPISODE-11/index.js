@@ -9,7 +9,7 @@ x()
 // So, this setTimeout takes the callback function and attaches the timer of 3000 milliseconds to it.
 // and once the timer expires, it takes that function and puts it again to the call stack and runs it, that's how setTimeout work.
 
-function x () {
+function y () {
   for (var i = 1; i <= 5; i++) {
     setTimeout(function () {
       console.log(i)
@@ -17,9 +17,9 @@ function x () {
   }
   console.log('Namaste Javascript')
 }
-x()
+y()
 
-function x () {
+function z () {
   for (var i = 1; i <= 5; i++) {
     function close (i) {
       setTimeout(function () {
@@ -31,3 +31,16 @@ function x () {
   }
   console.log('Namaste Javascript')
 }
+z()
+
+// Real time example of closure :
+const clickHandler = (color) => {
+  const newFunc = () => {
+    document.body.style.backgroundColor = `${color}`
+  }
+
+  return newFunc
+}
+
+document.getElementById('orange').onclick = clickHandler('orange')
+document.getElementById('purple').onclick = clickHandler('purple')
