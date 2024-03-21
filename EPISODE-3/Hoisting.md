@@ -51,3 +51,4 @@ var getName = function () {
 };
 // The code won't execute as the first line itself throws an TypeError.
 ```
+
