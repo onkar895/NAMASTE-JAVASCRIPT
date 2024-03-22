@@ -72,7 +72,10 @@ GEC = [a:{},[lexical_environment pointer pointing to null]]
 ![Reference-Image](https://alok722.github.io/namaste-javascript-notes/assets/lexical2.jpg)
 
 -   **Lexical Environment** = local memory + lexical env of its parent.
-    Hence, Lexical Environement is the local memory along with the lexical environment of its parent.
+-   Every execution context has a reference to its outer environment, and that outer environment is called **Lexical Environment.**
+
+    -   Hence, Lexical Environement or Lexical scope is the local memory along with the lexical environment of its parent.
+    -   Lexical scope means that function defined inside a function will alway have access to its outer environment.
 
 -   **Lexical**: In hierarchy, In order
 

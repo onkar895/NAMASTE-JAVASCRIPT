@@ -37,3 +37,35 @@ function y () {
 }
 y()
 console.log(b); // Error, Not Defined
+
+// Normal :  
+function two () {
+  var a
+  console.log(a)
+}
+function one () {
+  var a = 2
+  console.log(a)
+  two()
+}
+var a = 1
+console.log(a)
+one()
+
+// Output : 1 2 undefined
+
+// Lexical environment :
+// Every execution context has a reference to its outer environment, and that outer environment is called Lexical Environment.
+function two () {
+  console.log(a)
+}
+function one () {
+  var a = 2
+  console.log(a)
+  two()
+}
+var a = 1
+console.log(a)
+one()
+
+// Output : 1 2 1
