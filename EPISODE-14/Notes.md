@@ -51,3 +51,18 @@ function printAll() {
 }
 printAll(); // A B C // in order
 ```
+
+### Event Listener :
+
+-   We will create a button in html and attach event to it.
+
+```js
+// index.html
+<button id="clickMe">Click Me!</button>;
+
+// in index.js
+document.getElementById("clickMe").addEventListener("click", function xyz() {
+    //when event click occurs, this callback function (xyz) is called into callstack
+    console.log("Button clicked");
+});
+```
