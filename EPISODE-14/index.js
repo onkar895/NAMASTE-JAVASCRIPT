@@ -34,3 +34,7 @@ function printAll () {
 }
 printAll() // A B C // in order
 
+document.getElementById('clickMe').addEventListener('click', function xyz () {
+  // when event click occurs, this callback function (xyz) is called into callstack
+  console.log('Button clicked')
+})
