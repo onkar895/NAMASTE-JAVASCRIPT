@@ -67,3 +67,31 @@ document.getElementById("clickMe").addEventListener("click", function xyz() {
     console.log("Button clicked");
 });
 ```
+
+-   Lets implement a increment counter button.
+
+    -   Using global variable (not good as anyone can change it)
+
+    ```js
+    let count = 0;
+    document.getElementById("clickMe").addEventListener("click", function xyz() {
+        console.log("Button clicked", ++count);
+    });
+    ```
+
+    -   Use closures for data abstraction
+
+    ```js
+    function attachEventList() {
+        //creating new function for closure
+        let count = 0;
+        document.getElementById("clickMe").addEventListener("click", function xyz() {
+            console.log("Button clicked", ++count); //now callback function forms closure with outer scope(count)
+        });
+    }
+    attachEventList();
+    ```
+
+### Garbage Collection and removeEventListeners
+
+-   Event listeners are heavy as they form closures. So even when call stack is empty, EventListener won't free up memory allocated to count as it doesn't know when it may need count again. So we remove event listeners when we don't need them (garbage collected) onClick, onHover, onScroll all in a page can slow it down heavily.
