@@ -25,3 +25,23 @@ Note: Call stack will execeute any execeution context which enters it. Time, tid
 
 -   Let's undertand the below code image and its explaination:
     ![Eventloop3](https://github.com/alok722/namaste-javascript-notes/blob/master/assets/eventloop3.jpg)
+
+### Code :
+
+```js
+console.log("start");
+setTimeout(function cb() {
+    console.log("timer");
+}, 5000);
+console.log("end");
+// start end timer
+```
+
+### Explaination :
+
+-   First a GEC is created and put inside call stack.
+-   console.log("Start"); // this calls the console web api (through window) which in turn actually modifies values in console.
+-   setTimeout(function cb() { //this calls the setTimeout web api which gives access to timer feature. It stores the callback cb() and starts timer. console.log("Callback");}, 5000);
+-   console.log("End"); // calls console api and logs in console window. After this GEC pops from call stack.
+-   While all this is happening, the timer is constantly ticking. After it becomes 0, the callback cb() has to run.
+-   Now we need this cb to go into call stack. Only then will it be executed. For this we need event loop and Callback queue
