@@ -55,3 +55,22 @@ Q: How after 5 secs timer is console?
 -   Once cb() is in callback queue, eventloop pushes it to callstack to run. Console API is used and log printed.
 
 ![Eventloop4](https://github.com/alok722/namaste-javascript-notes/blob/master/assets/eventloop4.jpg)
+
+Q: Another example to understand Eventloop & Callback Queue.
+
+See the below Image and code and try to understand the reason:
+![Eventloop5](https://github.com/alok722/namaste-javascript-notes/blob/master/assets/eventloop5.jpg)
+
+### Explaination :
+
+```js
+console.log("Start");
+document.getElementById("btn").addEventListener("click", function cb() {
+    // cb() registered inside webapi environment and event(click) attached to it. i.e. REGISTERING CALLBACK AND ATTACHING EVENT TO IT.
+    console.log("Callback");
+});
+console.log("End"); // calls console api and logs in console window. After this GEC get removed from call stack.
+```
+
+-   In the above code, even after console prints "Start" and "End" and pops GEC out, the eventListener stays in webapi env(with hope that user may click it some day) until explicitly removed, or the browser is closed.
+-   **Eventloop has just one job to keep checking callback queue and if found something push it to call stack and delete from callback queue.**
