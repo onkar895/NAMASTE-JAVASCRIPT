@@ -119,3 +119,36 @@ See below Image for more understanding
 -   Callback functions that come through promises and mutation observer go inside Microtask Queue.
 -   All the rest goes inside Callback Queue aka. Task Queue.
 -   If the task in microtask Queue keeps creating new tasks in the queue, element in callback queue never gets chance to be run. This is called starvation
+
+### Some Important Questions :
+
+**Q:1. When does the event loop actually start ?**
+**Ans** : Event loop, as the name suggests, is a single-thread, loop that is almost infinite. It's always running and doing its job.
+
+**Q:2. Are only asynchronous web api callbacks are registered in web api environment?**
+**Ans** : YES, the synchronous callback functions like what we pass inside map, filter and reduce aren't registered in the Web API environment. It's just those async callback functions which go through all this.
+
+**Q:3. Does the web API environment stores only the callback function and pushes the same callback to queue/microtask queue?**
+**Ans** : Yes, the callback functions are stored, and a reference is scheduled in the queues. Moreover, in the case of event listeners(for example click handlers), the original callbacks stay in the web API environment forever, that's why it's adviced to explicitly remove the listeners when not in use so that the garbage collector does its job.
+
+**Q:4. How does it matter if we delay for setTimeout would be 0ms. Then callback will move to queue without any wait ?**
+**Ans** : No, there are trust issues with setTimeout() 😅. The callback function needs to wait until the Call Stack is empty. So the 0 ms callback might have to wait for 100ms also if the stack is busy.
+
+### Observation of Eventloop, Callback Queue & Microtask Queue [GiF]
+
+![microtask1](https://github.com/alok722/namaste-javascript-notes/blob/master/assets/microtask1.gif)
+</br>
+
+![microtask2](https://github.com/alok722/namaste-javascript-notes/blob/master/assets/microtask2.gif)
+</br>
+
+![microtask3](https://github.com/alok722/namaste-javascript-notes/blob/master/assets/microtask3.gif)
+</br>
+
+![microtask4](https://github.com/alok722/namaste-javascript-notes/blob/master/assets/microtask4.gif)
+</br>
+
+![microtask5](https://github.com/alok722/namaste-javascript-notes/blob/master/assets/microtask5.gif)
+</br>
+
+![microtask6](https://github.com/alok722/namaste-javascript-notes/blob/master/assets/microtask6.gif)

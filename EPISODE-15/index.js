@@ -21,7 +21,7 @@ console.log('Start'); // this calls the console web api (through window) which i
 setTimeout(function cbT () {
   console.log('CB Timeout')
 }, 5000)
-fetch('https://api.netflix.com').then(function cbF () {
+fetch('https://www.netflix.com/in/').then(function cbF () {
   console.log('CB Netflix')
 }) // take 2 seconds to bring response
 // millions lines of code
