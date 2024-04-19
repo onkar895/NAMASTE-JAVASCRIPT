@@ -14,3 +14,15 @@ document.getElementById('btn').addEventListener('click', function cb () {
 console.log('End'); // calls console api and logs in console window. After this GEC get removed from call stack.
 
 // In above code, even after console prints "Start" and "End" and pops GEC out, the eventListener stays in webapi env(with hope that user may click it some day) until explicitly removed, or the browser is closed.
+
+// Behaviour of fetch (Microtask Queue?) :
+
+console.log('Start'); // this calls the console web api (through window) which in turn actually modifies values in console.
+setTimeout(function cbT () {
+  console.log('CB Timeout')
+}, 5000)
+fetch('https://api.netflix.com').then(function cbF () {
+  console.log('CB Netflix')
+}) // take 2 seconds to bring response
+// millions lines of code
+console.log('End')
