@@ -45,3 +45,13 @@ console.log("end");
 -   console.log("End"); // calls console api and logs in console window. After this GEC pops from call stack.
 -   While all this is happening, the timer is constantly ticking. After it becomes 0, the callback cb() has to run.
 -   Now we need this cb to go into call stack. Only then will it be executed. For this we need event loop and Callback queue
+
+### Event Loops and Callback Queue
+
+Q: How after 5 secs timer is console?
+
+-   cb() cannot simply directly go to callstack to be execeuted. It goes through the callback queue when timer expires.
+-   Event loop keep checking the callback queue, and see if it has any element to puts it into call stack. It is like a gate keeper.
+-   Once cb() is in callback queue, eventloop pushes it to callstack to run. Console API is used and log printed.
+
+![Eventloop4](https://github.com/alok722/namaste-javascript-notes/blob/master/assets/eventloop4.jpg)
