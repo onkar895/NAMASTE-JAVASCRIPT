@@ -32,23 +32,22 @@
     ![jsengine](https://github.com/alok722/namaste-javascript-notes/blob/master/assets/jsengine.jpg)
     <br/>
 
+### More Detailed Explaination :
+
+-   In JavaScript, the source code typically goes through the following phases before it is executed,
+
+    -   **Tokenizing:** Breaking up a source code string into meaningful chunks called, Tokens. For example, the source code var age = 7; can be tokenize as, var, age, =, 7 and, ;.
+
+    -   **Parsing:** Parsing is a methodology to take the array of Tokens as input and turn it into a tree of nested elements understood by the grammar of the programming language. This tree is called Abstract Syntax Tree(AST).
+
+    -   **Code Generation:** In this phase, the AST is used as input, and an executable byte-code is generated that is understood by the environment(or platform) where the executable code will be running. The executable byte-code is then refined/converted even further by the optimizing JIT (Just-In-Time) compiler.
+
+    -   "A Picture worth thousand words". Here is a pictorial representation of how these three phases take place:
+
     GIF DEMO :
     ![jsengine](https://github.com/alok722/namaste-javascript-notes/blob/master/assets/jsenginegif.gif)
 
--   Companies use different JS engines and each try to make theirs the best.
-
-    -   v8 of Google has Interpreter called Ignition, a compiler called Turbo Fan and garbage collector called Orinoco
-
-    -   V8 Architecture :
-        ![jsengine](https://github.com/alok722/namaste-javascript-notes/blob/master/assets/jsengine.png)
-        <br/>
-
-        ### Explaination :
-
-        -   The **JavaScript Source Code** goes through the Parser and generates **AST (Abstract Syntax Tree)**.
-        -   and this AST has an **Interpreter Ignition** and it convers the code into **Bytecode** which is then executed.
-        -   and along with the interpreter works the **TurboFan Compiler.**
-        -   This **TurboFan Compiler** constantly working on Optimizing the code and it produces this optimized code and generates this Bytecode which is then later executed.
+    -   You can use the [AST Explorer](https://astexplorer.net/) tool to see how code written by you gets parsed into an Abstract Syntax Tree(AST).
 
 ### Working of JS Engine proper Explaination :
 
@@ -67,3 +66,18 @@
     -   Event Loop (for asynchronous operations): In environments like web browsers and Node.js, JavaScript is often used for asynchronous programming. Engines provide an event loop mechanism to handle asynchronous operations such as timers, network requests, and I/O operations. This ensures that JavaScript remains responsive even when performing tasks that may take some time to complete.
 
     -   Overall, JavaScript engines are complex pieces of software designed to efficiently execute JavaScript code and provide a seamless experience for developers and end-users alike. Different engines, like V8 in Chrome and Node.js, SpiderMonkey in Firefox, and ChakraCore in Microsoft Edge, have their own unique optimizations and features, but they all follow similar principles.
+
+-   Companies use different JS engines and each try to make theirs the best.
+
+    -   v8 of Google has Interpreter called Ignition, a compiler called Turbo Fan and garbage collector called Orinoco
+
+    -   V8 Architecture :
+        ![jsengine](https://github.com/alok722/namaste-javascript-notes/blob/master/assets/jsengine.png)
+        <br/>
+
+        ### Explaination :
+
+        -   The **JavaScript Source Code** goes through the Parser and generates **AST (Abstract Syntax Tree)**.
+        -   and this AST has an **Interpreter Ignition** and it convers the code into **Bytecode** which is then executed.
+        -   and along with the interpreter works the **TurboFan Compiler.**
+        -   This **TurboFan Compiler** constantly working on Optimizing the code and it produces this optimized code and generates this Bytecode which is then later executed.
