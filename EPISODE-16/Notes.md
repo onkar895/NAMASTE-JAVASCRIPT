@@ -19,3 +19,16 @@
     -   **Compilation** - JS has something called Just-in-time(JIT) Compilation - uses both interpreter & compiler. Also compilation and execution both go hand in hand. The AST from previous step goes to interpreter which converts hi-level code to byte code and moves to execeution. While interpreting, compiler also works hand in hand to compile and form optimized code during runtime. **Does JavaScript really Compiles?** The answer is a loud YES. More info at: [Link 1](https://github.com/getify/You-Dont-Know-JS/blob/2nd-ed/get-started/ch1.md#whats-in-an-interpretation), [Link 2](https://web.stanford.edu/class/cs98si/slides/overview.html), [Link 3](https://blog.greenroots.info/javascript-interpreted-or-compiled-the-debate-is-over). JS used to be only interpreter in old times, but now has both to compile and interpreter code and this make JS a JIT compiled language, its like best of both world.
 
     -   **Execution** - Needs 2 components ie. Memory heap(place where all memory is stored) and Call Stack(same call stack from prev episodes). There is also a garbage collector. It uses an algo called **Mark and Sweep.**
+
+    ![jsengine](https://github.com/alok722/namaste-javascript-notes/blob/master/assets/jsengine.jpg)
+    <br/>
+
+    GIF DEMO :
+    ![jsengine](https://github.com/alok722/namaste-javascript-notes/blob/master/assets/jsenginegif.gif)
+
+-   Companies use different JS engines and each try to make theirs the best.
+
+    -   v8 of Google has Interpreter called Ignition, a compiler called Turbo Fan and garbage collector called Orinoco
+
+    -   V8 Architecture :
+        ![jsengine](https://github.com/alok722/namaste-javascript-notes/blob/master/assets/jsengine.png)
