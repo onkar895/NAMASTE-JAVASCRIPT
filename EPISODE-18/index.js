@@ -54,6 +54,12 @@ const circumference = function (radius) {
   return 2 * Math.PI * radius
 }
 
+// logic to calculate diameter
+
+const diameter = function (radius) {
+  return 2 * radius
+}
+
 const calculate = function (radiusArr, operation) {
   const output = []
   for (let i = 0; i < radiusArr.length; i++) {
@@ -63,6 +69,7 @@ const calculate = function (radiusArr, operation) {
 }
 console.log(calculate(radiusArr, area))
 console.log(calculate(radiusArr, circumference))
+console.log(calculate(radiusArr, diameter))
 // Over here calculate is HOF
 // Over here we have extracted logic into separate functions. This is the beauty of functional programming.
 
