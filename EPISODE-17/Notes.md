@@ -26,3 +26,23 @@
     -   This is called as the Concurrency model of JS. This is the logic behind setTimeout's trust issues.
 
 -   The First rule of JavaScript: Do not block the main thread (as JS is a single threaded(only 1 callstack) language).
+
+-   In below example, we are blocking the main thread. Observe Questiona and Output.
+    ![settimeout1](https://github.com/alok722/namaste-javascript-notes/blob/master/assets/settimeout1.jpg)
+
+-   setTimeout guarantees that it will take at least the given timer to execute the code.
+
+-   JS is a synchronous single threaded language. With just 1 thread it runs all pieces of code. It becomes kind of an interpreter language, and runs code very fast inside browser (no need to wait for code to be compiled) (JIT - Just in time compilation). And there are still ways to do async operations as well.
+
+-   What if timeout = 0sec?
+
+```js
+console.log("Start");
+setTimeout(function cb() {
+    console.log("Callback");
+}, 0);
+console.log("End");
+// Even though timer = 0s, the cb() has to go through the queue. Registers calback in webapi's env , moves to callback queue, and execute once callstack is empty.
+// O/p - Start End Callback
+// This method of putting timer = 0, can be used to defer a less imp function by a little so the more important function(here printing "End") can take place
+```
