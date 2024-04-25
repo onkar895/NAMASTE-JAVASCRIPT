@@ -44,3 +44,28 @@ const output = arr.reduce((acc, curr) => {
   return acc = acc + curr
 }, 0)
 console.log(output)
+
+// Find the maximum number inside the array :
+
+// Functional/Normal way :
+
+const findMax = (arr) => {
+  let max = 0
+  for (let i = 0; i < arr.length; i++) {
+    if (max < arr[i]) {
+      max = arr[i]
+    }
+  }
+  return max
+}
+console.log('Maximum number is', findMax(arr))
+
+// By using reduce :
+
+const Output = arr.reduce((max, curr) => {
+  if (max < curr) {
+    max = curr
+  }
+  return max
+}, 0)
+console.log(Output)
