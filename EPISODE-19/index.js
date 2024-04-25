@@ -40,7 +40,7 @@ console.log(findSum(arr))
 
 // By using reduce :
 
-const output = arr.reduce((x, acc) => {
-  return acc = acc + x
-})
+const output = arr.reduce((acc, curr) => {
+  return acc = acc + curr
+}, 0)
 console.log(output)
