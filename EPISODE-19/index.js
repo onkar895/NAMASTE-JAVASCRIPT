@@ -14,7 +14,7 @@ console.log(doubledArray)
 
 // filter : Used to filter the values in an array
 
-// Find the even Numbers in he arrayss
+// Find the even Numbers in the array
 const isEvenNum = arr.filter((y) => {
   return (y % 2 === 0)
 })
@@ -27,7 +27,7 @@ console.log(isEvenNum)
 // Like sum of all the elements in an array.
 // or may be to find max/min number inside the array.
 
-// Functional/Normal way :
+// Non-Functional/Normal way :
 
 const findSum = (arr) => {
   let sum = 0
@@ -47,7 +47,7 @@ console.log(output)
 
 // Find the maximum number inside the array :
 
-// Functional/Normal way :
+// Non-Functional/Normal way :
 
 const findMax = (arr) => {
   let max = 0
