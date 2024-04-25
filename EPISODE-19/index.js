@@ -69,3 +69,37 @@ const Output = arr.reduce((max, curr) => {
   return max
 }, 0)
 console.log(Output)
+
+// Some Tricky questions of map, filter and reduce :
+
+// 1. Find out the fullName of the users
+const users = [
+  { firstName: 'Alok', lastName: 'Raj', age: 23 },
+  { firstName: 'Ashish', lastName: 'Kumar', age: 29 },
+  { firstName: 'Ankit', lastName: 'Roy', age: 29 },
+  { firstName: 'Pranav', lastName: 'Mukherjee', age: 50 }
+]
+
+const fullName = users.map((name) => {
+  return name.firstName + ' ' + name.lastName
+})
+console.log(fullName)
+
+// 2. Find out the firtName of all the users whose age is 29.
+
+const findFirstName = users.filter((fname) => fname.age === 29).map((x) => x.firstName)
+
+console.log(findFirstName)
+
+// 3. Find out how many users have particular age, let's find how many users have age 29?
+
+const Age = users.reduce((acc, curr) => {
+  if (acc[curr.age]) {
+    acc[curr.age] = ++acc[curr.age]
+  }else {
+    acc[curr.age] = 1
+  }
+  return acc
+}, {})
+
+console.log(Age)
