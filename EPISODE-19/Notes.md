@@ -117,6 +117,7 @@ console.log(fullName); // [ 'Alok Raj', 'Ashish Kumar', 'Ankit Roy', 'Pranav Muk
 
 // 2. Find out the firtName of all the users whose age is 29.
 
+// Function Chaining :
 const findFirstName = users.filter((fname) => fname.age === 29).map((x) => x.firstName);
 
 console.log(findFirstName); // [ 'Ashish', 'Ankit' ]
