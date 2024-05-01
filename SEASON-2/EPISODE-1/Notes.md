@@ -37,7 +37,7 @@ console.log("Season 2");
 // 💡 Here we are delaying the execution using callback approach of setTimeout.
 ```
 
-🛒 let's assume E-Commerce web app situation :
+### 🛒 `let's assume E-Commerce web app situation :`
 
 -   Assume a scenario of e-Commerce web, where one user is placing order, he has added items like, shoes, pants and kurta in cart and now he is placing order. So in backend the situation could look something like this.
 
@@ -52,7 +52,7 @@ api.createOrder();
 api.proceedToPayment();
 ```
 
--   Assumption, once order is created then only we can proceed to payment, so there is a dependency. So How to manage this dependency. Callback can come as rescue, How?
+### `Assumption, once order is created then only we can proceed to payment, so there is a dependency. So How to manage this dependency. Callback can come as rescue, How?`
 
 ```js
 api.createOrder(cart, function () {
@@ -91,11 +91,11 @@ api.createOrder(cart, function () {
 -   This occurs mainly in the asynchronous programming environment like while handling async requests or file operations where the function doesn’t execute in the fixed order.
 -   The callbacks are chained within the callbacks, making the code structure look like a pyramid.
 
--   Inversion of Control :
+-   **Inversion of Control :**
     -   Till this point we are comfortable with concept of callback hell but now lets discuss about **Inversion of Control**. It is very important to understand in order to get comfortable around the concept of promise.
     -   When we pass a function as a callback, basically we are dependant on our parent function that it is his responsibility to run that function. This is called **`inversion of control`** because we are dependant on that function. What if parent function stopped working, what if it was developed by another programmer or callback runs two times or never run at all.
 
-### Let's understand with the help of example code and comments:
+### `Let's understand with the help of example code and comments:`
 
 ```js
 api.createOrder(cart, function () {
