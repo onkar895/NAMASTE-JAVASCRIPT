@@ -36,3 +36,79 @@ console.log("Season 2");
 
 // 💡 Here we are delaying the execution using callback approach of setTimeout.
 ```
+
+🛒 let's assume E-Commerce web app situation :
+
+-   Assume a scenario of e-Commerce web, where one user is placing order, he has added items like, shoes, pants and kurta in cart and now he is placing order. So in backend the situation could look something like this.
+
+```js
+const cart = ["shoes", "pants", "kurta"];
+// Two steps to place a order
+// 1. Create a Order
+// 2. Proceed to Payment
+
+// It could look something like this:
+api.createOrder();
+api.proceedToPayment();
+```
+
+-   Assumption, once order is created then only we can proceed to payment, so there is a dependency. So How to manage this dependency. Callback can come as rescue, How?
+
+```js
+api.createOrder(cart, function () {
+    api.proceedToPayment();
+});
+// 💡 Over here `createOrder` api is first creating a order then it is responsible to call `api.proceedToPayment()` as part of callback approach.
+```
+
+-   To make it a bit complicated, what if after payment is done, you have to show Order summary by calling api.showOrderSummary() and now it has dependency on api.proceedToPayment() Now my code should look something like this:
+
+```js
+api.createOrder(cart, function () {
+    api.proceedToPayment(function () {
+        api.showOrderSummary();
+    });
+});
+```
+
+-   Now what if we have to update the wallet, now this will have a dependency over showOrderSummary.
+
+```js
+api.createOrder(cart, function () {
+    api.proceedToPayment(function () {
+        api.showOrderSummary(function () {
+            api.updateWallet();
+        });
+    });
+});
+// 💡 Callback Hell
+```
+
+-   **Callback Hell** is essentially nested callbacks stacked below one another forming a pyramid structure. Every callback depends/waits for the previous callback, thereby making a pyramid structure that affects the readability and maintainability of the code.
+
+-   When we have a large codebase and multiple apis and have dependency on each other, then we fall into **callback hell.** These codes are tough to maintain. - These callback hell structure is also known as **Pyramid of Doom.**
+-   This situation of callback hell is created when there are multiple nested callback functions are there which make the code complex and hard to read.
+-   This occurs mainly in the asynchronous programming environment like while handling async requests or file operations where the function doesn’t execute in the fixed order.
+-   The callbacks are chained within the callbacks, making the code structure look like a pyramid.
+
+-   Till this point we are comfortable with concept of callback hell but now lets discuss about Inversion of Control. It is very important to understand in order to get comfortable around the concept of promise.
+
+### Let's understand with the help of example code and comments:
+
+```js
+api.createOrder(cart, function () {
+    api.proceedToPayment();
+});
+
+// 💡 So over here, we are creating a order and then we are blindly trusting `createOrder` to call `proceedToPayment`.
+
+// 💡 It is risky, as `proceedToPayment` is important part of code and we are blindly trusting `createOrder` to call it and handle it.
+
+// 💡 When we pass a function as a callback, basically we are dependant on our parent function that it is his responsibility to run that function. This is called `inversion of control` because we are dependant on that function. What if parent function stopped working, what if it was developed by another programmer or callback runs two times or never run at all.
+
+// 💡 In next session, we will see how we can fix such problems.
+```
+
+💡 Async programming in JavaScript exists because callback exits.
+
+**learn moree about callbacks here at http://callbackhell.com/**

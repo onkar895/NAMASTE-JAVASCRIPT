@@ -21,3 +21,13 @@ console.log('Season 2')
 // JavaScript
 
 // 💡 Here we are delaying the execution using callback approach of setTimeout.
+
+api.createOrder(cart, function () {
+  api.proceedToPayment(function () {
+    api.showOrderSummary(function () {
+      api.updateWallet()
+    })
+  })
+})
+// 💡 Callback Hell
+// When we have a large codebase and multiple apis and have dependency on each other, then we fall into **callback hell.** These codes are tough to maintain. These callback hell structure is also known as **Pyramid of Doom.**
