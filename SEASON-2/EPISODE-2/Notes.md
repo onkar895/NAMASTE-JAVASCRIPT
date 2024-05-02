@@ -115,6 +115,65 @@ user.then(function (data) {
 
 -   A Promise is in one of these states:
 
-    -   pending: initial state, neither fulfilled nor rejected.
-    -   fulfilled: meaning that the operation was completed successfully.
-    -   rejected: meaning that the operation failed.
+    -   **pending:** initial state, neither fulfilled nor rejected.
+    -   **fulfilled:** meaning that the operation was completed successfully.
+    -   **rejected:** meaning that the operation failed.
+
+💡Promise Object are immutable.
+-> Once promise is **fulfilled** and we have data we can pass here and there and we don't have to worry that someone can mutate that data. So over above we can't directly mutate user promise object, we will have to use **.then**
+
+### Interview Guide
+
+💡What is Promise?
+-> Promise object is a placeholder for certain period of time until we receive value from asynchronous operation.
+
+-> A container for a future value.
+
+-> **A Promise is an object representing the eventual completion or failure of an asynchronous operation.**
+
+We are now done solving one issue of callback i.e. Inversion of Control
+
+But there is one more issue, callback hell...
+
+```js
+// Callback Hell Example
+createOrder(cart, function (orderId) {
+    proceedToPayment(orderId, function (paymentInf) {
+        showOrderSummary(paymentInf, function (balance) {
+            updateWalletBalance(balance);
+        });
+    });
+});
+// And now above code is expanding horizontally and this is called pyramid of doom.
+// Callback hell is ugly and hard to maintain.
+
+// 💡 Promise fixes this issue too using `Promise Chaining`
+// Example Below is a Promise Chaining
+createOrder(cart)
+    .then(function (orderId) {
+        proceedToPayment(orderId);
+    })
+    .then(function (paymentInf) {
+        showOrderSummary(paymentInf);
+    })
+    .then(function (balance) {
+        updateWalletBalance(balance);
+    });
+
+// ⚠️ Common PitFall
+// We forget to return promise in Promise Chaining
+// The idea is promise/data returned from one .then become data for next .then
+// So,
+createOrder(cart)
+    .then(function (orderId) {
+        return proceedToPayment(orderId);
+    })
+    .then(function (paymentInf) {
+        return showOrderSummary(paymentInf);
+    })
+    .then(function (balance) {
+        return updateWalletBalance(balance);
+    });
+
+// To improve readability you can use arrow function instead of regular function
+```
