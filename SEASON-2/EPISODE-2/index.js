@@ -12,3 +12,5 @@ createOrder(cart, function () {
   proceedToPayment(orderId)
 })
 // Above there is the issue of `Inversion of Control`
+
+

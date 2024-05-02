@@ -24,17 +24,97 @@ createOrder(cart, function () {
 Q: How to fix the above issue?
 A: We can fix this issue using **Promise.**
 
--   Now, we will make **createOrder** function return a promise and we will capture that promise into a variable.
+-   Now, we will make **createOrder function** return a promise and we will capture that promise into a variable.
 
--   Promise is nothing but we can assume it to be empty object with some data value in it, and this data value will hold whatever this createOrder function will return.
+-   Promise is nothing but we can assume it to be empty object with some data value in it, and this data value will hold whatever this **createOrder function** will return.
 
--   Since createOrder function is an async function and we don't know how much time will it take to finish execution.
+-   Since **createOrder function** is an async function and we don't know how much time will it take to finish execution.
 
--   So the moment createOrder will get executed, it will return you a undefined value. Let's say after 5 secs execution finished so now orderId is ready so, it will fill the undefined value with the orderId.
+-   So the moment **createOrder** will get executed, it will return you a **undefined value.** Let's say after 5 secs execution finished so now orderId is ready so, it will fill the undefined value with the orderId.
 
 -   In short, When createOrder get executed, it immediately returns a promise object with undefined value.
 -   Then javascript will continue to execute with other lines of code.
--   After sometime when createOrder has finished execution and orderId is ready then that will automatically be assigned to our returned promise which was earlier undefined.
+-   After sometime when createOrder has finished execution and orderId is ready then that will **automatically** be assigned to our returned promise which was earlier undefined.
 
 Q: Question is how we will get to know **response** is ready?
-A: So, we will attach a **callback function** to the **promise** object using then to get triggered automatically when result is ready.
+A: So, we will attach a **callback function** to the **promise** object using then to get triggered **automatically** when result is ready.
+
+```js
+const cart = ["shoes", "pants", "kurta"];
+
+const promiseRef = createOrder(cart);
+// this promiseRef has access to `then`
+
+// {data: undefined}
+// Initially it will be undefined so below code won't trigger
+// After some time, when execution has finished and promiseRef has the data then automatically the below line will get triggered.
+
+promiseRef.then(function () {
+    proceedToPayment(orderId);
+});
+```
+
+Q: How it is better than callback approach?
+
+-   In Earlier solution we used to pass the function and then used to trust the function to execute the callback.
+
+-   But with promise, we are attaching a callback function to a promiseObject.
+
+-   There is difference between these words, passing a function and attaching a function.
+
+-   Promise guarantee, it will callback the attached function once it has the fulfilled data. And it will call it only once. Just once.
+
+-   Earlier we talked about promise are object with empty data but that's not entirely true, Promise are much more than that.
+
+**Now let's understand and see a real promise object.**
+
+-   fetch is a web-api which is utilized to make api call and it returns a promise.
+
+-   We will be calling public github api to fetch data https://api.github.com/users/alok722
+
+```js
+// We will be calling public github api to fetch data
+const URL = "https://api.github.com/users/alok722";
+const user = fetch(URL);
+// User above will be a promise.
+console.log(user); // Promise {<Pending>}
+
+/** OBSERVATIONS:
+ * If we will deep dive and see, this `promise` object has 3 things
+ * `prototype`, `promiseState` & `promiseResult`
+ * & this `promiseResult` is the same data which we talked earlier as data
+ * & initially `promiseResult` is `undefined`
+ *
+ * `promiseResult` will store data returned from API call
+ * `promiseState` will tell in which state the promise is currently, initially it will be in `pending` state and later it will become `fulfilled`
+ */
+
+/**
+ * When above line is executed, `fetch` makes API call and return a `promise` instantly which is in `Pending` state and Javascript doesn't wait to get it `fulfilled`
+ * And in next line it console out the `pending promise`.
+ * NOTE: chrome browser has some in-consistency, the moment console happens it shows in pending state but if you will expand that it will show fulfilled because chrome updated the log when promise get fulfilled.
+ * Once fulfilled data is there in promiseResult and it is inside body in ReadableStream format and there is a way to extract data.
+ */
+```
+
+-   Now we can attach callback to above response?
+
+**Using .then**
+
+```js
+const URL = "https://api.github.com/users/alok722";
+const user = fetch(URL);
+
+user.then(function (data) {
+    console.log(data);
+});
+// And this is how Promise is used.
+// It guarantees that it could be resolved only once, either it could be `success` or `failure`
+/**
+    A Promise is in one of these states:
+
+    pending: initial state, neither fulfilled nor rejected.
+    fulfilled: meaning that the operation was completed successfully.
+    rejected: meaning that the operation failed.
+ */
+```
