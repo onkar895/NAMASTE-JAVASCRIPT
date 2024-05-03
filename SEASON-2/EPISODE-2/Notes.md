@@ -30,33 +30,49 @@ A: We can fix this issue using **Promise.**
 
 -   Now, we will make **createOrder function** return a promise and we will capture that promise into a variable.
 
+    ```js
+    const cart = ["shoes", "pants", "kurta"];
+
+    const promise = createOrder(cart);
+    ```
+
 -   Promise is nothing but we can assume it to be empty object with some data value in it, and this data value will hold whatever this **createOrder function** will return.
 
 -   Since **createOrder function** is an async function and we don't know how much time will it take to finish execution.
 
--   So the moment **createOrder** will get executed, it will return you a **undefined value.** Let's say after 5 secs execution finished so now orderId is ready so, it will fill the undefined value with the orderId.
+-   So the moment **createOrder** will get executed, it will return you a **undefined value.** Let's say after 5 secs execution finished, so now orderId is ready and it will fill the undefined value with the orderId.
 
 -   In short, When createOrder get executed, it immediately returns a promise object with undefined value.
+
+    `{data: undefined}`
+    `Initially it will be undefined`
+
 -   Then javascript will continue to execute with other lines of code.
+
 -   After sometime when createOrder has finished execution and orderId is ready then that will **automatically** be assigned to our returned promise which was earlier undefined.
 
-Q: Question is how we will get to know **response** is ready?
-A: So, we will attach a **callback function** to the **promise** object using then to get triggered **automatically** when result is ready.
+    `So it looks like : {data: orderDetails}`
 
-```js
-const cart = ["shoes", "pants", "kurta"];
+-   So after getting the data, the question is how we will get to know **response** is ready?
+    **Ans:** So, we will attach a **callback function** to the **promise** object using `.then` to get triggered **automatically** when result is ready.
 
-const promiseRef = createOrder(cart);
-// this promiseRef has access to `then`
+    ```js
+    promise.then(function (orderId) {
+        proceedToPayment(orderId);
+    });
+    ```
 
-// {data: undefined}
-// Initially it will be undefined so below code won't trigger
-// After some time, when execution has finished and promiseRef has the data then automatically the below line will get triggered.
+-   So after all the steps, the full code looks like :
 
-promiseRef.then(function () {
-    proceedToPayment(orderId);
-});
-```
+    ```js
+    const cart = ["shoes", "pants", "kurta"];
+
+    const promise = createOrder(cart);
+
+    promise.then(function (orderId) {
+        proceedToPayment(orderId);
+    });
+    ```
 
 Q: How it is better than callback approach?
 
