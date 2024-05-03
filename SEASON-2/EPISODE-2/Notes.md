@@ -1,8 +1,10 @@
 ## Promises :
 
-**`Promises are used to handle the asynchronous operations in JavaScript compared to callback functions.**
-**`By creating a promise, you are essentially telling the JavaScript engine to "promise" to perform a specific action and notify you once it is completed or fails. The code either executes or fails , in both the cases subscriber will be notified.`**
-**`Next, callback functions are then attached to the promise to handle the outcome of the action. These callbacks will be invoked when the promise is fulfilled (action completed successfully) or rejected (action failed).`**
+**`Promises are used to handle the asynchronous operations in JavaScript compared to callback functions.`**
+
+`By creating a promise, you are essentially telling the JavaScript engine to "promise" to perform a specific action and notify you once it is completed or fails. The code either executes or fails , in both the cases subscriber will be notified.`
+
+`Next, callback functions are then attached to the promise to handle the outcome of the action. These callbacks will be invoked when the promise is fulfilled (action completed successfully) or rejected (action failed).`
 
 We will discuss with code example that how things used to work before Promises and then how it works after Promises
 
