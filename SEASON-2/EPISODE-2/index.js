@@ -116,3 +116,17 @@ myPromise.then((result) => {
 // And if the promise is rejected, the .catch method will be called with an error message.
 // You can also add the .finally() method, which will be called after a promise is settled.
 // This means that .finally() will be invoked regardless of the status of a promise (whether resolved or rejected).
+
+// How to Use the Promise.all Method: 
+
+// The Promise.all() method takes an array of promises as input and returns a single promise that is fulfilled 
+// when all input promises have been fulfilled. It can be useful when you wait for multiple promises to be resolved before taking action.
+let promise1 = fetch('https://jsonplaceholder.typicode.com/posts/1')
+let promise2 = fetch('https://jsonplaceholder.typicode.com/posts/2')
+let promise3 = fetch('https://jsonplaceholder.typicode.com/posts/3')
+// Here, promise1, promise2, and promise3 are promises that are fetching data from three different URLs.
+
+Promise.all([promise1, promise2, promise3])
+  .then((values) => {
+    console.log(values)
+  })
