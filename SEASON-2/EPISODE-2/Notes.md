@@ -148,28 +148,36 @@ createOrder(cart)
 // We will be calling public github api to fetch data
 const URL = "https://api.github.com/users/alok722";
 const user = fetch(URL);
-// User above will be a promise.
+// User above will be a promise and once the line finished the execution the fetch returns the promise.and at that particular time promise is in the pending state.
+// But JavaScript does not wait for anything so, it just quickly goes to the next line and logs the user which is in pending state.
 console.log(user); // Promise {<Pending>}
-
-/** OBSERVATIONS:
- * If we will deep dive and see, this `promise` object has 3 things
- * `prototype`, `promiseState` & `promiseResult`
- * & this `promiseResult` is the same data which we talked earlier as data
- * & initially `promiseResult` is `undefined`
- *
- * `promiseResult` will store data returned from API call
- * `promiseState` will tell in which state the promise is currently, initially it will be in `pending` state and later it will become `fulfilled`
- */
-
-/**
- * When above line is executed, `fetch` makes API call and return a `promise` instantly which is in `Pending` state and Javascript doesn't wait to get it `fulfilled`
- * And in next line it console out the `pending promise`.
- * NOTE: chrome browser has some in-consistency, the moment console happens it shows in pending state but if you will expand that it will show fulfilled because chrome updated the log when promise get fulfilled.
- * Once fulfilled data is there in promiseResult and it is inside body in ReadableStream format and there is a way to extract data.
- */
+// But what is google chrome does is , after some point of time the data comes into the "user promise object".
+// so if you expand the promise which shows pending in the console then it will show you the current state of the promise and you will see that it will be fullfilled.
 ```
 
--   Now we can attach callback to above response?
+### OBSERVATIONS OF THE ABOVE CODE:
+
+-   If we will deep dive and see, this `promise` object has 3 things
+
+-   `prototype`, `promiseState` & `promiseResult`
+
+-   & this `promiseResult` is the same data which we talked earlier as data.
+
+-   & initially `promiseResult` is `undefined`
+
+-   `promiseResult` will store data returned from API call
+
+-   `promiseState` will tell in which state the promise is currently, initially it will be in `pending` state and later it will become `fulfilled`
+
+-   When above line is executed, `fetch` makes API call and return a `promise` instantly which is in `Pending` state and Javascript doesn't wait to get it `fulfilled`
+
+-   And in next line it console out the `pending promise`.
+
+-   NOTE: chrome browser has some in-consistency, the moment console happens it shows in pending state but if you will expand that it will show fulfilled because chrome updated the log when promise get fulfilled.
+
+-   Once fulfilled data is there in promiseResult and it is inside body in ReadableStream format and there is a way to extract data.
+
+*   Now we can attach callback to above response?
 
 **Using .then**
 

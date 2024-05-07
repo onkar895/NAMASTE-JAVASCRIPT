@@ -1,5 +1,20 @@
 // Promises :
 
+// fetch is a web-api which is utilized to make api call and it returns a promise.
+// We will be calling public github api to fetch data https://api.github.com/users/alok722
+
+const URL = 'https://api.github.com/users/alok722'
+const user = fetch(URL)
+// User above will be a promise and once the line finished the execution the fetch returns the promise and at that particular time promise is in the pending state. 
+// But JavaScript does not wait for anything so, it just quickly goes to the next line and logs the user which is in pending state. and thats why after executing the line number 10 you will see pending in the console.
+console.log(user); // Promise {<Pending>}
+// But what is google chrome does is , after some point of time the data comes into the "user promise object".
+// so if you expand the promise which shows pending in the console then it will show you the current state of the promise and you will see that iw ill be fullfilled.
+// Now after getting the data we can attach the callback to get the response?
+user.then(function (data) {
+  console.log(data)
+})
+
 // How to produce a promise :
 
 // To create a promise, you'll have to create a new instance of the Promise object by calling the Promise constructor.
@@ -39,7 +54,7 @@ myPromise.then((result) => {
 }).catch((err) => {
   console.log(err) // rejected state
 }).finally(() => {
-  console.log('Your promise will get setlled')
+  console.log('Your promise will get setelled')
 })
 //  The .then method is called when a promise is fulfilled.
 // and the .catch method is called when a promise is rejected.
