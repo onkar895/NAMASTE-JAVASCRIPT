@@ -1,5 +1,9 @@
 ## Promises :
 
+**`A Promise is an object representing the eventual(finally or in the course of time, or later) completion or failure of an asynchronous operation.`**
+
+**`Essentially, promise is a returned object to which you can attach callbacks, instead of passing the callbacks into a function`**
+
 **`A Promise is used to handle asynchronous operations, which are some tasks that may take some time to complete, such as fetching data from a server or reading a file.`**
 
 `By creating a promise, you are essentially telling the JavaScript engine to "promise" to perform a specific action and notify you once it is completed or fails. The code either executes or fails , in both the cases subscriber will be notified.`
@@ -79,6 +83,8 @@ Q: How it is better than callback approach?
 -   In Earlier solution we used to pass the function and then used to trust the function to execute the callback.
 
 -   But with promise, we are attaching a callback function to a promise Object.
+
+-   that means **`Essentially, promise is a returned object to which you can attach callbacks, instead of passing the callbacks into a function`**
 
 -   There is difference between these words, passing a function and attaching a function.
 
