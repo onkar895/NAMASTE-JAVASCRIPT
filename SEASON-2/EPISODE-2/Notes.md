@@ -92,66 +92,6 @@ Q: How it is better than callback approach?
 
 -   Earlier we talked about promise are object with empty data but that's not entirely true, Promise are much more than that.
 
-### Another `Callback Hell` Example and how `promise` is used to avoid callback hell :
-
-```js
-createOrder(cart, function (orderId) {
-    proceedToPayment(orderId, function (paymentInf) {
-        showOrderSummary(paymentInf, function (balance) {
-            updateWalletBalance(balance);
-        });
-    });
-});
-// And now above code is expanding horizontally and this is called pyramid of doom.
-// Callback hell is ugly and hard to maintain.
-```
-
--   Promise fixes this issue too using `Promise Chaining` :
-
-    `Promise Chaining` :
-
-    ```js
-    createOrder(cart)
-        .then(function (orderId) {
-            proceedToPayment(orderId);
-        })
-        .then(function (paymentInf) {
-            showOrderSummary(paymentInf);
-        })
-        .then(function (balance) {
-            updateWalletBalance(balance);
-        });
-    ```
-
-⚠️ Common PitFall
-
--   We forget to return promise in Promise Chaining
--   The idea is promise/data returned from one `.then` become data for next `.then`. So basically we are pipe or passing the data/promise from one `.then` to another.
-
-```js
-createOrder(cart)
-    .then(function (orderId) {
-        return proceedToPayment(orderId);
-    })
-    .then(function (paymentInf) {
-        return showOrderSummary(paymentInf);
-    })
-    .then(function (balance) {
-        return updateWalletBalance(balance);
-    });
-```
-
--   To improve the readability you can use `arrow function` instead of regular function.
-
--   Using Arrow function :
-
-    ```js
-    createOrder(cart)
-        .then((orderId) => proceedToPayment(orderId));
-        .then((paymentInf) => showOrderSummary(paymentInf));
-        .then((balance) => updateWalletBalance(balance));
-    ```
-
 ### `Now let's understand and see a real promise object.`
 
 -   **fetch** is a web-api which is utilized to make api call and it returns a promise.
@@ -231,10 +171,11 @@ user.then(function (data) {
 
 We are now done solving one issue of callback i.e. Inversion of Control
 
-But there is one more issue, callback hell...
+But there is one more issue of callback hell...
+
+### Another `Callback Hell` Example and how `promise chaining` is used to avoid callback hell :
 
 ```js
-// Callback Hell Example
 createOrder(cart, function (orderId) {
     proceedToPayment(orderId, function (paymentInf) {
         showOrderSummary(paymentInf, function (balance) {
@@ -244,24 +185,31 @@ createOrder(cart, function (orderId) {
 });
 // And now above code is expanding horizontally and this is called pyramid of doom.
 // Callback hell is ugly and hard to maintain.
+```
 
-// 💡 Promise fixes this issue too using `Promise Chaining`
-// Example Below is a Promise Chaining
-createOrder(cart)
-    .then(function (orderId) {
-        proceedToPayment(orderId);
-    })
-    .then(function (paymentInf) {
-        showOrderSummary(paymentInf);
-    })
-    .then(function (balance) {
-        updateWalletBalance(balance);
-    });
+-   Promise fixes this issue too using `Promise Chaining` :
 
-// ⚠️ Common PitFall
-// We forget to return promise in Promise Chaining
-// The idea is promise/data returned from one .then become data for next .then
-// So,
+    `Promise Chaining` :
+
+    ```js
+    createOrder(cart)
+        .then(function (orderId) {
+            proceedToPayment(orderId);
+        })
+        .then(function (paymentInf) {
+            showOrderSummary(paymentInf);
+        })
+        .then(function (balance) {
+            updateWalletBalance(balance);
+        });
+    ```
+
+⚠️ Common PitFall
+
+-   We forget to return promise in Promise Chaining
+-   The idea is promise/data returned from one `.then` become data for next `.then`. So basically we are pipe or passing the data/promise from one `.then` to another.
+
+```js
 createOrder(cart)
     .then(function (orderId) {
         return proceedToPayment(orderId);
@@ -272,6 +220,15 @@ createOrder(cart)
     .then(function (balance) {
         return updateWalletBalance(balance);
     });
-
-// To improve readability you can use arrow function instead of regular function
 ```
+
+-   To improve the readability you can use `arrow function` instead of regular function.
+
+-   Using Arrow function :
+
+    ```js
+    createOrder(cart)
+        .then((orderId) => proceedToPayment(orderId));
+        .then((paymentInf) => showOrderSummary(paymentInf));
+        .then((balance) => updateWalletBalance(balance));
+    ```
