@@ -141,7 +141,16 @@ createOrder(cart)
     });
 ```
 
--   To improve readability you can use arrow function instead of regular function
+-   To improve the readability you can use `arrow function` instead of regular function.
+
+-   Using Arrow function :
+
+    ```js
+    createOrder(cart)
+        .then((orderId) => proceedToPayment(orderId));
+        .then((paymentInf) => showOrderSummary(paymentInf));
+        .then((balance) => updateWalletBalance(balance));
+    ```
 
 ### `Now let's understand and see a real promise object.`
 
