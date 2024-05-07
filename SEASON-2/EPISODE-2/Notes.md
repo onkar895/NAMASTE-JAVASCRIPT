@@ -78,13 +78,65 @@ Q: How it is better than callback approach?
 
 -   In Earlier solution we used to pass the function and then used to trust the function to execute the callback.
 
--   But with promise, we are attaching a callback function to a promiseObject.
+-   But with promise, we are attaching a callback function to a promise Object.
 
 -   There is difference between these words, passing a function and attaching a function.
 
 -   Promise guarantee, it will callback the attached function once it has the fulfilled data. And it will call it only once. Just once.
 
 -   Earlier we talked about promise are object with empty data but that's not entirely true, Promise are much more than that.
+
+### Another `Callback Hell` Example and how `promise` is used to avoid callback hell :
+
+```js
+createOrder(cart, function (orderId) {
+    proceedToPayment(orderId, function (paymentInf) {
+        showOrderSummary(paymentInf, function (balance) {
+            updateWalletBalance(balance);
+        });
+    });
+});
+// And now above code is expanding horizontally and this is called pyramid of doom.
+// Callback hell is ugly and hard to maintain.
+```
+
+-   Promise fixes this issue too using `Promise Chaining` :
+
+    `Promise Chaining` :
+
+    ```js
+    createOrder(cart)
+        .then(function (orderId) {
+            proceedToPayment(orderId);
+        })
+        .then(function (paymentInf) {
+            showOrderSummary(paymentInf);
+        })
+        .then(function (balance) {
+            updateWalletBalance(balance);
+        });
+    ```
+
+⚠️ Common PitFall
+
+-   We forget to return promise in Promise Chaining
+-   The idea is promise/data returned from one `.then` become data for next `.then`
+    So,
+
+```js
+createOrder(cart)
+    .then(function (orderId) {
+        return proceedToPayment(orderId);
+    })
+    .then(function (paymentInf) {
+        return showOrderSummary(paymentInf);
+    })
+    .then(function (balance) {
+        return updateWalletBalance(balance);
+    });
+```
+
+-   To improve readability you can use arrow function instead of regular function
 
 **Now let's understand and see a real promise object.**
 

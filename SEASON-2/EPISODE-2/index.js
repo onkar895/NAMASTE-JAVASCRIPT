@@ -1,53 +1,12 @@
 // Promises :
 
-// Callback Hell Example
-createOrder(cart, function (orderId) {
-  proceedToPayment(orderId, function (paymentInf) {
-    showOrderSummary(paymentInf, function (balance) {
-      updateWalletBalance(balance)
-    })
-  })
-})
-// And now above code is expanding horizontally and this is called pyramid of doom.
-// Callback hell is ugly and hard to maintain.
-
-// 💡 Promise fixes this issue too using `Promise Chaining` :
-// Example Below is a Promise Chaining
-createOrder(cart)
-  .then(function (orderId) {
-    proceedToPayment(orderId)
-  })
-  .then(function (paymentInf) {
-    showOrderSummary(paymentInf)
-  })
-  .then(function (balance) {
-    updateWalletBalance(balance)
-  })
-
-// ⚠️ Common PitFall
-// We forget to return promise in Promise Chaining
-// The idea is promise/data returned from one .then become data for next .then
-// So,
-createOrder(cart)
-  .then(function (orderId) {
-    return proceedToPayment(orderId)
-  })
-  .then(function (paymentInf) {
-    return showOrderSummary(paymentInf)
-  })
-  .then(function (balance) {
-    return updateWalletBalance(balance)
-  })
-
-// To improve readability you can use arrow function instead of regular function
-
 // How to produce a promise :
 
 // To create a promise, you'll have to create a new instance of the Promise object by calling the Promise constructor.
-  // The constructor takes a single argument: a function called 'executor.' The "executor" function is called immediately when the promise is created, and it takes two arguments: a 'resolve' function and a 'reject' function.
-  // resolve and reject are two callbacks provided by javascript engine itself.
-  //  1. resolve(value): If the job is finished succesfully. 
-  //  2. reject(error): If the job fails or gets an error message.
+// The constructor takes a single argument: a function called 'executor.' The "executor" function is called immediately when the promise is created, and it takes two arguments: a 'resolve' function and a 'reject' function.
+// resolve and reject are two callbacks provided by javascript engine itself.
+//  1. resolve(value): If the job is finished succesfully. 
+//  2. reject(error): If the job fails or gets an error message.
 
 // syntax : let promise = new Promise((resolve, reject) => {})
 // So basically promise takes two inbuild methods which are resolve and reject which are taken as a callback function.
