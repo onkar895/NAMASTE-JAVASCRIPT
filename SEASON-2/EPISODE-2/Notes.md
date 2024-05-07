@@ -127,7 +127,6 @@ createOrder(cart, function (orderId) {
 
 -   We forget to return promise in Promise Chaining
 -   The idea is promise/data returned from one `.then` become data for next `.then`
-    So,
 
 ```js
 createOrder(cart)
@@ -144,9 +143,9 @@ createOrder(cart)
 
 -   To improve readability you can use arrow function instead of regular function
 
-**Now let's understand and see a real promise object.**
+### `Now let's understand and see a real promise object.`
 
--   fetch is a web-api which is utilized to make api call and it returns a promise.
+-   **fetch** is a web-api which is utilized to make api call and it returns a promise.
 
 -   We will be calling public github api to fetch data https://api.github.com/users/alok722
 
