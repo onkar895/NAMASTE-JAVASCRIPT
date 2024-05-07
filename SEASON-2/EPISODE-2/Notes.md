@@ -126,7 +126,7 @@ createOrder(cart, function (orderId) {
 ⚠️ Common PitFall
 
 -   We forget to return promise in Promise Chaining
--   The idea is promise/data returned from one `.then` become data for next `.then`
+-   The idea is promise/data returned from one `.then` become data for next `.then`. So basically we are pipe or passing the data/promise from one `.then` to another.
 
 ```js
 createOrder(cart)
