@@ -1,6 +1,6 @@
 ## Promises :
 
-**`Promises are used to handle the asynchronous operations in JavaScript compared to callback functions.`**
+**`A Promise is used to handle asynchronous operations, which are some tasks that may take some time to complete, such as fetching data from a server or reading a file.`**
 
 `By creating a promise, you are essentially telling the JavaScript engine to "promise" to perform a specific action and notify you once it is completed or fails. The code either executes or fails , in both the cases subscriber will be notified.`
 
@@ -177,7 +177,7 @@ console.log(user); // Promise {<Pending>}
 
 -   Once fulfilled data is there in promiseResult and it is inside body in ReadableStream format and there is a way to extract data.
 
-*   Now we can attach callback to above response?
+*   Now after getting the data we can attach callback to above response?
 
 **Using .then**
 
@@ -202,14 +202,18 @@ user.then(function (data) {
 💡Promise Object are immutable.
 -> Once promise is **fulfilled** and we have data we can pass here and there and we don't have to worry that someone can mutate that data. So over above we can't directly mutate user promise object, we will have to use **.then**
 
-### Interview Guide
+### `Interview Guide :`
 
 💡What is Promise?
--> Promise object is a placeholder for certain period of time until we receive value from asynchronous operation.
 
--> A container for a future value.
+-> **Promise object is a placeholder for certain period of time until we receive value from asynchronous operation.**
 
--> **A Promise is an object representing the eventual completion or failure of an asynchronous operation.**
+-> **A container for a future value.**
+
+`Recommended Defination :`
+-> **A Promise is an object representing the eventual(finally or in the course of time, or later) completion or failure of an asynchronous operation.**
+
+-> So here `Eventual` from the above line refers to `something that will happen at some point in the future, but the exact timing may not be specified or immediate.`
 
 We are now done solving one issue of callback i.e. Inversion of Control
 
