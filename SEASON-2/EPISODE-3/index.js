@@ -7,10 +7,26 @@ console.log(promise)
 
 promise.then(function (orderId) {
   console.log(orderId)
-// proceedToPayment(orderId)
-}).catch(function (err) {
-  console.log(err.message)
+  return orderId
 })
+  .catch(function (err) {
+    console.log(err.message)
+  })
+  .then(function (orderId) {
+    return proceedToPayment(orderId)
+  })
+  .then(function (paymentInfo) {
+    console.log(paymentInfo)
+  })
+  .catch(function (err) {
+    console.log(err.message)
+  })
+  .then(function () {
+    console.log('No matter what happens, I will definietely be called')
+  })
+  .catch(function (err) {
+    console.log(err.message)
+  })
 
 function createOrder (cart) {
   const promise = new Promise(function (resolve, reject) {
@@ -33,6 +49,12 @@ function createOrder (cart) {
   return promise
 }
 
+function proceedToPayment (orderId) {
+  return new Promise(function (resolve, reject) {
+    resolve('Payment Successful')
+  })
+}
+
 function validateCart (cart) {
-  return false
+  return true
 }
