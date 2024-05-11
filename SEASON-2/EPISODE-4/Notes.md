@@ -117,7 +117,7 @@ async function handlePromise() {
 handlePromise();
 // This time `Hello There!` won't be printed immediately instead after 3 secs. `Hello There!` will be printed followed by 'Promise resolved value!!'
 // 💡 So basically code was waiting at `await` line to get the promise resolve before moving on to next line.
-
+// `await` is a keyword that is used inside an async function to pause the execution of the function until a promise is resolved.
 // Above is the major difference between Promise.then/.catch vs async-await
 
 //🤓 Let's brainstorm more around async-await

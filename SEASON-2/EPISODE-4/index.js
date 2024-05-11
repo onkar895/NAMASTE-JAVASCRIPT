@@ -35,7 +35,8 @@ getData1()
 
 const handlePromise = async () => {
   const val = await p;
-  console.log("Namaste javascript and promise resolve after 10 sec because we are using await keyword here")
+  // `await` here is used inside an async function to pause the execution of the function until a promise is resolved.
+  console.log("Namaste javascript and promise resolve will print after 5 sec after a promise is resolved and then go to tge next line")
   console.log(val)
 }
 
