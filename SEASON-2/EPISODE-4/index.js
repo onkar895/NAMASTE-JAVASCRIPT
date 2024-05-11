@@ -16,11 +16,14 @@ result.then((res) => console.log(res))
 // But Question is how we used to handle promises earlier and why we even need async/await?
 
 const p = new Promise((resolve, reject) => {
-  resolve("Promise resolved value!!")
+  setTimeout(() => {
+    resolve("Promise resolved value!!")
+  }, 5000)
 })
 
 function getData1() {
   p.then(res => console.log(res))
+  console.log("Namaste javascript is printing immediately because we are using .then here")
 }
 
 getData1()
@@ -32,6 +35,7 @@ getData1()
 
 const handlePromise = async () => {
   const val = await p;
+  console.log("Namaste javascript and promise resolve after 10 sec because we are using await keyword here")
   console.log(val)
 }
 
