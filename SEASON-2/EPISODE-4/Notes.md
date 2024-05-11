@@ -46,3 +46,34 @@ const dataPromise = getData();
 console.log(dataPromise); // Promise {<fulfilled>: 'Promise resolved value!!'}
 dataPromise.then((res) => console.log(res)); // Promise resolved value!!
 ```
+
+Q: How we can use await along with async function?
+A: async and await combo is used to handle promises.
+
+But Question is how we used to handle promises earlier and why we even need async/await?
+
+```js
+// Using (previous) .then method :
+const p = new Promise((resolve, reject) => {
+    resolve("Promise resolved value!!");
+});
+
+function getData1() {
+    p.then((res) => console.log(res));
+}
+
+getData1();
+
+// 📌 Till now we have been using Promise.then/.catch to handle promise.
+
+// Now let's see how async await can help us and how it is different
+// The rule is we have to use keyword await in front of promise.
+
+// Using Async-Await :
+const handlePromise = async () => {
+    const val = await p;
+    console.log(val);
+};
+
+handlePromise();
+```
