@@ -17,7 +17,7 @@ result.then((res) => console.log(res))
 
 const p = new Promise((resolve, reject) => {
   setTimeout(() => {
-    resolve("Promise resolved value!!")
+    resolve("Promise resolved!!")
   }, 5000)
 })
 
@@ -46,19 +46,19 @@ handlePromise()
 const p1 = new Promise((resolve, reject) => {
     setTimeout(() => {
         resolve("Promise resolved value by p1!!");
-    }, 5000);
+    }, 10000);
 });
 
 const p2 = new Promise((resolve, reject) => {
     setTimeout(() => {
         resolve("Promise resolved value by p2!!");
-    }, 10000);
+    }, 5000);
 });
 
 async function handlePromise1() {
     console.log("Hi");
     debugger;
-    const val = await p;
+    const val = await p1;
     console.log("Hello There! 1");
     debugger;
     console.log(val);

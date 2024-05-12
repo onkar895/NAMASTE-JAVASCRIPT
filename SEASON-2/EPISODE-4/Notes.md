@@ -200,17 +200,21 @@ async function handlePromise() {
     console.log(val2);
 }
 handlePromise();
-// When this function is executed, it will go line by line as JS is synchronous single threaded language. Lets observe what is happening under call-stack. Above you can see we have set the break-points.
 
-// call stack flow -> handlePromise() is pushed -> It will log `Hi` to console.
-// Next it sees we have await, where promise is suppose to be resolved -> So will it wait for promise to resolve and block call stack?
-// The answer is No -> thus handlePromise() execution get suspended and moved out of call stack -> So when JS sees await keyword it suspend the execution of function till promise is resolved -> So `p` will get resolved after 5 secs so handlePromise() will be pushed to call-stack again after 5 secs.
+// When this function is executed, it will go line by line as JS is synchronous single threaded language.
+
+// Lets observe what is happening under call-stack. Above you can see we have set the break-points.
+
+// call stack flow -> handlePromise() is pushed into the call stack -> It will log `Hi` to console.
+// Next, it sees we have await keyword, where promise is suppose to be resolved -> So will it wait for promise to resolve and block call stack?
+// The answer is No -> this handlePromise() execution get suspended and moved out of call stack -> So when JS sees await keyword it suspend the execution of function till promise is resolved -> So `p` will get resolved after 5 secs so that's why handlePromise() will be pushed to call-stack again after 5 secs.
 // -> But this time it will start executing from where it had left.
 // -> Now it will log 'Hello There!' and 'Promise resolved value!!'
 // -> then it will check whether `p2` is resolved or not.
-//  -> It will find since `p2` will take 10 secs to resolve so the same above process will repeat -> execution will be suspended until promise is resolved.
+//  -> It will find since `p2` will take 10 secs to resolve so the same above process will repeat
+// -> execution will be suspended until promise p2 is resolved.
 
-// 📌 Thus JS is not waiting, call stack is not getting blocked.
+// 📌 Thus JS engine is not waiting here, call stack is not getting blocked.
 
 // Moreover in above scenario what if p1 would be taking 10 secs and p2 5 secs -> even though p2 got resolved earlier but JS is synchronous single threaded language so it will first wait for p1 to be resolved and then will immediately execute all.
 ```
