@@ -171,6 +171,7 @@ handlePromise();
 ```
 
 **Que: Question is Is program actually waiting or what is happening behind the scene?**
+
 `Ans: As we know, Time, Tide and JS wait for none. And it's true. Over here it appears that JS engine is waiting but JS engine is not waiting over here. It has not occupied the call stack if that would have been the case our page may have got frozen. So JS engine is not waiting. So if it is not waiting then what it is doing behind the scene? Let's understand with below code snippet.`
 
 ```js
@@ -217,4 +218,32 @@ handlePromise();
 // 📌 Thus JS engine is not waiting here, call stack is not getting blocked.
 
 // Moreover in above scenario what if p1 would be taking 10 secs and p2 5 secs -> even though p2 got resolved earlier but JS is synchronous single threaded language so it will first wait for p1 to be resolved and then will immediately execute all.
+```
+
+### Error Handling :
+
+While we were using normal Promise we were using .catch to handle error, now in async-await we would be using try-catch block to handle error.
+
+```js
+const handleinfo = async () => {
+    try {
+        const data = await fetch("https://dummyjson.com/products");
+        const response = await data.json();
+        console.log(response);
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+handleInfo();
+
+// fetch () => fetch function is basically a promise so when this prmomise is resolved the fetch function gives you the response object and this response object has a body which is a readableStream.
+// and suppose you want to convert this readableStream to json you will have to do '.json()'.
+// and this '.json()' is again a promise. and when this prmise also gets resolved thuis gives you the final result or data.
+
+// In above example, whenever any error will occur the execution will move to catch block. One could try above with bad url which will result in error.
+
+// Other way of handling error :
+handleInfo().catch((err) => console.log(err));
+// this will work as handlePromise will return error promise in case of failure.
 ```

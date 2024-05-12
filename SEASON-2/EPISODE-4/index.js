@@ -69,3 +69,19 @@ async function handlePromise1() {
     console.log(val2);
 }
 handlePromise1();
+
+
+
+// Real world time examples to fetch the data from API's and handeling the errors :
+
+const handleinfo = async () => {
+  try {
+    const data = await fetch('https://dummyjson.com/products')
+    const response = await data.json()
+    console.log(response)
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+handleinfo()
