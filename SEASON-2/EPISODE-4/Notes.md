@@ -169,3 +169,48 @@ async function handlePromise() {
 handlePromise();
 // 📌 `Hi` printed instantly -> now code will wait for 2 secs -> After 2 secs ('Hello There!' 'Promise resolved value by p2!!') will get printed and in the subsequent second i.e. after 3 secs ('Hello There! 2' 'Promise resolved value!!') will get printed
 ```
+
+**Que: Question is Is program actually waiting or what is happening behind the scene?**
+`Ans: As we know, Time, Tide and JS wait for none. And it's true. Over here it appears that JS engine is waiting but JS engine is not waiting over here. It has not occupied the call stack if that would have been the case our page may have got frozen. So JS engine is not waiting. So if it is not waiting then what it is doing behind the scene? Let's understand with below code snippet.`
+
+```js
+const p1 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve("Promise resolved value by p1!!");
+    }, 5000);
+});
+
+const p2 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve("Promise resolved value by p2!!");
+    }, 10000);
+});
+
+async function handlePromise() {
+    console.log("Hi");
+    debugger;
+    const val = await p;
+    console.log("Hello There!");
+    debugger;
+    console.log(val);
+
+    const val2 = await p2;
+    console.log("Hello There! 2");
+    debugger;
+    console.log(val2);
+}
+handlePromise();
+// When this function is executed, it will go line by line as JS is synchronous single threaded language. Lets observe what is happening under call-stack. Above you can see we have set the break-points.
+
+// call stack flow -> handlePromise() is pushed -> It will log `Hi` to console.
+// Next it sees we have await, where promise is suppose to be resolved -> So will it wait for promise to resolve and block call stack?
+// The answer is No -> thus handlePromise() execution get suspended and moved out of call stack -> So when JS sees await keyword it suspend the execution of function till promise is resolved -> So `p` will get resolved after 5 secs so handlePromise() will be pushed to call-stack again after 5 secs.
+// -> But this time it will start executing from where it had left.
+// -> Now it will log 'Hello There!' and 'Promise resolved value!!'
+// -> then it will check whether `p2` is resolved or not.
+//  -> It will find since `p2` will take 10 secs to resolve so the same above process will repeat -> execution will be suspended until promise is resolved.
+
+// 📌 Thus JS is not waiting, call stack is not getting blocked.
+
+// Moreover in above scenario what if p1 would be taking 10 secs and p2 5 secs -> even though p2 got resolved earlier but JS is synchronous single threaded language so it will first wait for p1 to be resolved and then will immediately execute all.
+```

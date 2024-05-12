@@ -23,7 +23,7 @@ const p = new Promise((resolve, reject) => {
 
 function getData1() {
   p.then(res => console.log(res))
-  console.log("Namaste javascript is printing immediately because we are using .then here")
+  console.log("Namaste javascript is printing immediately because we are using .then here and after 5 sec promise will be resolved")
 }
 
 getData1()
@@ -42,3 +42,30 @@ const handlePromise = async () => {
 
 handlePromise()
 
+
+const p1 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve("Promise resolved value by p1!!");
+    }, 5000);
+});
+
+const p2 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve("Promise resolved value by p2!!");
+    }, 10000);
+});
+
+async function handlePromise1() {
+    console.log("Hi");
+    debugger;
+    const val = await p;
+    console.log("Hello There! 1");
+    debugger;
+    console.log(val);
+
+    const val2 = await p2;
+    console.log("Hello There! 2");
+    debugger;
+    console.log(val2);
+}
+handlePromise1();
