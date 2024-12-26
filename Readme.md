@@ -1,14 +1,9 @@
 # Welcome to Namaste Javascript Notes 🚀
 
-## ❓ what it is
+## ❓ Check out my JavaScript notes!
 
-> This repo maintains my version of javascript notes which I learned from the famous [Namaste Javascript Youtube Series](https://www.youtube.com/watch?v=pN6jk0uUrD8&list=PLlasXeu85E9cQ32gLCvAvr9vNaUccPVNP&index=1&ab_channel=AkshaySaini) by Akshay Saini.
-
-<br>
-
-## 🚀 [PDF Version of Complete Notes](./Namaste%20Javascript%20Notes%20Including%20Season%202.pdf)
-
-**PDF Credits:** Alok Raj (@alok722)
+> This repo features my personal version of the JavaScript concepts I’ve learned from the incredible [Namaste Javascript Youtube Series](https://www.youtube.com/watch?v=pN6jk0uUrD8&list=PLlasXeu85E9cQ32gLCvAvr9vNaUccPVNP&index=1&ab_channel=AkshaySaini) by Akshay Saini. 💻✨
+> Perfect for developers looking to level up their JavaScript skills! 📚👨‍💻
 
 <br>
 
@@ -80,6 +75,12 @@
 
 <br>
 
+## 🚀 [PDF Version of Complete Notes](./Namaste%20Javascript%20Notes%20Including%20Season%202.pdf)
+
+**PDF Credits:** Alok Raj (@alok722)
+
+<br>
+
 ## ✨ Show your support
 
-Give a ⭐️ if this repository helped you!
+Give a ⭐️ if this repository really helped you!
