@@ -8,6 +8,8 @@
 
 ## 🚀 [PDF Version of Complete Notes](./Namaste%20Javascript%20Notes%20Including%20Season%202.pdf)
 
+**PDF Credits:** Alok Raj (@alok722)
+
 <br>
 
 ## 📝 Content List
@@ -74,6 +76,7 @@
 
 - My Website: [OnkarKarale.dev](https://linktr.ee/OnkarKarale.dev)
 - Linkedin: [@omkarkarale541](https://www.linkedin.com/in/omkarkarale541/)
+- Twitter: [@ItsOnkar_dev](https://x.com/ItsOnkar_dev)
 
 <br>
 
