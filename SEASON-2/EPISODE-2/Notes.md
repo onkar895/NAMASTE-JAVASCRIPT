@@ -164,7 +164,7 @@ user.then(function (data) {
 
 -> **A container for a future value.**
 
-`Recommended Defination :`
+`Recommended Defination :` 
 -> **A Promise is an object representing the eventual(finally or in the course of time, or later) completion or failure of an asynchronous operation.**
 
 -> So here `Eventual` from the above line refers to `something that will happen at some point in the future, but the exact timing may not be specified or immediate.`
